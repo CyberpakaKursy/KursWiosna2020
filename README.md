@@ -6,9 +6,9 @@ przez różnych uczestników szkolenia i na biężaco jest aktualizowany i utrzy
 przy wykorzystaniu narzędzia Trello.
 
 
-W misc.xml należy wstawić:
-    <output url="file://$PROJECT_DIR$/out" />
-wewnątrz komponentu:
-    <component name="ProjectRootManager">
+W misc.xml należy wstawić <br>
+    ```<output url="file://$PROJECT_DIR$/out" />```<br>
+wewnątrz komponentu<br>
+    ```<component name="ProjectRootManager">
         ...
-    </component>
+    </component>```
