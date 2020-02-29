@@ -1,3 +1,3 @@
-public class Volkswagen implements Auto {
+public class Volkswagen implements Auto { 
 
 }
