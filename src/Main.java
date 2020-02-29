@@ -12,4 +12,12 @@ public class Main {
         String formatDateTime = now.format(formatter);
         System.out.println("Otworzono o:\t"+formatDateTime);
     }
+
+    void metodaTworzacaWszystkieObiektyImplementujaceInterfejs(){
+        Carrot carrot = new Carrot();
+        Banan banan = new Banan();
+        Rozowy rozowy = new Rozowy();
+        Volkswagen volkswagen = new Volkswagen();
+        Owca owca = new Owca();
+    }
 }
