@@ -8,6 +8,5 @@ public enum SlodyczeZUkrainy {
     CukierkiMeteoryt,
     SliwkaSuszonaWCzekoladzie,
     BatonikGulliwer,
-    CukierkiZoruaneSiajwo
-
+    CukierkiZorianeSiajwo
 }
