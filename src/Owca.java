@@ -1,2 +1,2 @@
-public interface owca {
+public class Owca implements Zwierze {
 }

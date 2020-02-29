@@ -1,2 +1,2 @@
-public interface zwierze {
+public interface Zwierze {
 }
