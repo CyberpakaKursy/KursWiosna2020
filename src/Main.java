@@ -15,7 +15,11 @@ public class Main {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
             String formatDateTime = now.format(formatter);
-            System.out.println("Otworzono o:\t" + formatDateTime);
+            System.out.println("Otworzono1 o:\t" + formatDateTime);
+            String formatDateTime2 = now.format(formatter);
+            System.out.println("Otworzono2 o:\t" + formatDateTime2);
+            String formatDateTime3 = now.format(formatter);
+            System.out.println("Otworzono3 o:\t" + formatDateTime3);
             String znakNaKoniecPentli = scanner.nextLine();
             if (znakNaKoniecPentli.equals("q")){
                 break;
