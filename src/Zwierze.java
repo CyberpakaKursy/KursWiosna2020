@@ -6,4 +6,6 @@ public interface Zwierze {
 
     void tak(int tak);
     void nie(int nie);
+
+    void cukierek(int smaczny);
 }
