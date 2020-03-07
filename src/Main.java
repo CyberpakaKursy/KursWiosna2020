@@ -20,14 +20,23 @@ public class Main {
             System.out.println("Otworzono2 o:\t" + formatDateTime2);
             String formatDateTime3 = now.format(formatter);
 
+
             System.out.println("trol o:\t" + formatDateTime3);
 
             System.out.println("Otworzono3 kajsdajklshkj;avjaskdbx;nzcz,x.vaskjdbasdjkgb");
+
+            System.out.println("Otworzono3 Hejkaaaaaaaaaa o:\t" + formatDateTime3);
+
+            System.out.println("Otworzono3 kajsdajklshkj;avjaskdbx;nzcz,x.vaskjdbasdjkgb");
+
+            String alfa = "QqWwEeRrTtYyUuIiOoPpAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm";
+
 
             String znakNaKoniecPentli = scanner.nextLine();
 //            String formatDateTime = now.format(formatter);
 //            System.out.println("Otworzono o:\t" + formatDateTime);
 //            String znakNaKoniecPentli = scanner.nextLine();
+
             if (znakNaKoniecPentli.equals("q")){
                 break;
             }
