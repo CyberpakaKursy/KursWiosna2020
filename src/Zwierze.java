@@ -4,6 +4,8 @@ public interface Zwierze {
     void KolorOwcy(String kolorowcy);
     String mojaNowaWspanialaZmiana();
     Integer Wiekowcy(int Wiek);
+    void ImieOwcy(String imie);
+
 
     void tak(int tak);
     void nie(int nie);
