@@ -21,6 +21,9 @@ public class Main {
             String formatDateTime3 = now.format(formatter);
             System.out.println("Otworzono3 o:\t" + formatDateTime3);
             String znakNaKoniecPentli = scanner.nextLine();
+//            String formatDateTime = now.format(formatter);
+//            System.out.println("Otworzono o:\t" + formatDateTime);
+//            String znakNaKoniecPentli = scanner.nextLine();
             if (znakNaKoniecPentli.equals("q")){
                 break;
             }
