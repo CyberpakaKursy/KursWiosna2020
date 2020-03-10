@@ -15,8 +15,18 @@ public class Owca implements Zwierze {
     }
 
     @Override
+    public String mojaNowaWspanialaZmiana() {
+        return null;
+    }
+
+    @Override
     public Integer Wiekowcy(int Wiek) {
         return null;
+    }
+
+    @Override
+    public void ImieOwcy(String imie) {
+
     }
 
     @Override
@@ -26,6 +36,11 @@ public class Owca implements Zwierze {
 
     @Override
     public void nie(int nie) {
+
+    }
+
+    @Override
+    public void cukierek(int smaczny) {
 
     }
 }
