@@ -23,7 +23,7 @@ public class Main {
 
             System.out.println("trol o:\t" + formatDateTime3);
 
-            System.out.println("Otworzono3 kajsdajklshkj;avjaskdbx;nzcz,x.vaskjdbasdjkgb");
+            System.out.println("ok zrobilem");
 
             System.out.println("Otworzono3 Hejkaaaaaaaaaa o:\t" + formatDateTime3);
 
