@@ -27,7 +27,7 @@ public class Main {
 
             System.out.println("Otworzono3 Hejkaaaaaaaaaa o:\t" + formatDateTime3);
 
-            System.out.println("Otworzono3 kajsdajklshkj;avjaskdbx;nzcz,x.vaskjdbasdjkgb");
+            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
             String alfa = "QqWwEeRrTtYyUuIiOoPpAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm";
 
