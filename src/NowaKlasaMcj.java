@@ -1,8 +1,8 @@
 public class NowaKlasaMcj {
-    public void method1(){
+    public void add1(){
     }
-    public void method2(){
+    public void add2(){
     }
-    public void method3(){
+    public void add3(){
     }
 }
