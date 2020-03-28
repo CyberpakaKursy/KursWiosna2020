@@ -1,12 +1,14 @@
 public class JakChceVal {
-    public void nwm(){
+    public void valnew() {
 
     }
-    public void nwm1(){
+
+    public void valnew1() {
 
     }
-public void nwm2(){
 
-}
+    public void valnew2() {
+
+    }
 }
 
