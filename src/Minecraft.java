@@ -1,11 +1,11 @@
 public class Minecraft {
-    public void mine(){
+    public void asd(){
 
     }
-    public void craft(){
+    public void crafasdasdasdt(){
 
     }
-    public void place(){
+    public void plaasdasdce(){
 
     }
 }
