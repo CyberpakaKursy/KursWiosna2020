@@ -19,14 +19,16 @@ public class Main {
             String formatDateTime2 = now.format(formatter);
             System.out.println("Otworzono2 o:\t" + formatDateTime2);
             String formatDateTime3 = now.format(formatter);
-
-
             System.out.println("trol o:\t" + formatDateTime3);
 
+            System.out.println("Otworzono3 Hejkaaaaaaaaaa o:\t" + formatDateTime3);
             System.out.println("Otworzono3 kajsdajklshkj;avjaskdbx;nzcz,x.vaskjdbasdjkgb");
-
             String alfa = "QqWwEeRrTtYyUuIiOoPpAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm";
+            System.out.println("Hejka tu Madzia");
+            System.out.println("cześć");
 
+            System.out.println("jak coś to pisze to bo to było zadanko domowe");
+            System.out.println("i sorki że dodaje to dopiero dzisiasj :)");
 
             String znakNaKoniecPentli = scanner.nextLine();
 //            String formatDateTime = now.format(formatter);
