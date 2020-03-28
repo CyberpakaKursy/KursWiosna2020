@@ -1,14 +1,16 @@
 public class JakChceVal {
-	public void nwmasd() {
 
-	}
+    public void valnew() {
 
-	public void nwsdam1() {
+    }
+git
+    public void valnew1() {
 
-	}
+    }
 
-	public void nwmasdasdad2() {
+    public void valnew2() {
 
-	}
+    }
+
 }
 

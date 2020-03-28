@@ -1,8 +1,8 @@
-public class NowaKlasaMcj {
-    public void sdasdasd(){
+public class  NowaKlasaMcj {
+    public void add1(){
     }
-    public void ssdsa(){
+    public void add2(){
     }
-    public void asdsds(){
+    public void add3(){
     }
 }
