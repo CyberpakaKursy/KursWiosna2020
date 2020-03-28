@@ -1,11 +1,11 @@
 public class Minecraft {
-    public void mine(){
+    public void mineForwardBlock(){
 
     }
-    public void craft(){
+    public void craftAnItem(){
 
     }
-    public void place(){
+    public void placeABlock(){
 
     }
 }
