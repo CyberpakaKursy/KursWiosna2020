@@ -20,6 +20,7 @@ public class Kalkulator {
 
 	public String dodawania(double a, double b){
 		double wynik = a + b;
+
 		return String.valueOf(wynik);
 	}
 	public String potegowanie(double a, double b) {
