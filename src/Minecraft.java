@@ -1,4 +1,5 @@
 public class Minecraft {
+
     public void mineForwardBlock(){
 
     }

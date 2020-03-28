@@ -1,12 +1,14 @@
 public class JakChceVal {
-    public void nwm(){
+	public void nwmasd() {
 
-    }
-    public void nwm1(){
+	}
 
-    }
-public void nwm2(){
+	public void nwsdam1() {
 
-}
+	}
+
+	public void nwmasdasdad2() {
+
+	}
 }
 
