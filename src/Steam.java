@@ -1,11 +1,12 @@
 public abstract class Steam {
-    String liczbagier() {
+    String liczbaodznak() {
         return null;
 
     }
 
-    Integer profil() {
+    Integer odznaka() {
         return null;
     }
-    abstract void iloscgodzin();
+
+    abstract void iloscznajomych();
 }
