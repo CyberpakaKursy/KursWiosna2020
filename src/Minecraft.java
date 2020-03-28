@@ -1,11 +1,12 @@
 public class Minecraft {
-    public void asd(){
+
+    public void mineForwardBlock(){
 
     }
-    public void crafasdasdasdt(){
+    public void craftAnItem(){
 
     }
-    public void plaasdasdce(){
+    public void placeABlock(){
 
     }
 }
