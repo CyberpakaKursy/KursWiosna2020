@@ -1,4 +1,5 @@
 public class JakChceVal {
+
     public void valnew() {
 
     }
@@ -10,5 +11,6 @@ public class JakChceVal {
     public void valnew2() {
 
     }
+
 }
 
