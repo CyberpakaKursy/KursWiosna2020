@@ -1,11 +1,11 @@
 public abstract class Steam {
-    String liczbagier() {
+    String asdasd() {
         return null;
 
     }
 
-    Integer profil() {
+    Integer asd() {
         return null;
     }
-    abstract void iloscgodzin();
+    abstract void asda();
 }
