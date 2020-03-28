@@ -1,4 +1,4 @@
-public class NowaKlasaMcj {
+public class  NowaKlasaMcj {
     public void add1(){
     }
     public void add2(){
