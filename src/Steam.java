@@ -1,11 +1,16 @@
 public abstract class Steam {
-    String asdasd() {
+
+    String liczbaodznak() {
+
         return null;
 
     }
 
-    Integer asd() {
+
+    Integer odznaka() {
         return null;
     }
-    abstract void asda();
+
+    abstract void iloscznajomych();
+
 }
