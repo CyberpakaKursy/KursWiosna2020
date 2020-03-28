@@ -22,6 +22,7 @@ public class Main {
             System.out.println("trol o:\t" + formatDateTime3);
 
             System.out.println("Otworzono3 Hejkaaaaaaaaaa o:\t" + formatDateTime3);
+            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             System.out.println("Otworzono3 kajsdajklshkj;avjaskdbx;nzcz,x.vaskjdbasdjkgb");
             String alfa = "QqWwEeRrTtYyUuIiOoPpAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm";
             System.out.println("Hejka tu Madzia");
