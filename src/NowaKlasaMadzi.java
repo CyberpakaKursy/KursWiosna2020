@@ -1,11 +1,11 @@
 public class NowaKlasaMadzi {
-    public static void madzia() {
+    public static void hejka() {
         System.out.println("tu Madzia");
     }
-    public static void madzia2() {
+    public static void toJa() {
         System.out.println("tu Madzia ponownie");
     }
-    public static void madzia3() {
+    public static void noSupcio() {
         System.out.println("tu Madzia po raz trzeci");
     }
 }
