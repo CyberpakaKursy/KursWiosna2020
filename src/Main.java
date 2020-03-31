@@ -1,5 +1,4 @@
 import gry.Gra;
-import gry.KolkoIKrzyzyk;
 import rankingi.Gracz;
 
 import java.util.Scanner;
