@@ -1,4 +1,5 @@
 import gry.Gra;
+import gry.KolkoIKrzyzyk;
 import rankingi.Gracz;
 
 import java.util.Scanner;
@@ -8,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner skaner = new Scanner(System.in);
 
-        SalonGier testowyTalonGier = new SalonGier("Wspaniale Testowy Salon Gier");
+        SalonGier testowyTalonGier = new SalonGier("Wspaniale Testowy Salon Gier", new KolkoIKrzyzyk());
         System.out.println("Witaj w salonie gier " + testowyTalonGier.nazwaSalonuGier + "!");
 
         System.out.println("Powiedz, kim jesteś?");
