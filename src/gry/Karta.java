@@ -5,7 +5,7 @@ public class Karta {
     private Integer wartosc;
     private String nazwa;
 
-    private Karta(){}
+    private Karta(Karta karta){}
 
     public Karta(String nazwa, Integer wartosc){
         this.wartosc = wartosc;
