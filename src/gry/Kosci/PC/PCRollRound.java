@@ -2,7 +2,7 @@ package gry.Kosci.PC;
 
 import gry.Kosci.InterfacesAndTable.RollRound;
 
-public class PCRollRound implements RollRound {
+public class PCRollRound extends RollRound {
     @Override
     public void roll() {
 
