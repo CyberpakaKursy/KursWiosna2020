@@ -3,8 +3,10 @@ package gry.makao;
 import gry.Karta;
 
 public class KartyFunkcyjne {
-    public static boolean czyFunkcyjna (Karta karta ){
+    public static boolean czyFunkcyjna (Karta karta) {
         return false;
+
+
     }
     public static boolean czyPominacKolejke (Karta karta){
         return false;

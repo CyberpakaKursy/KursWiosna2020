@@ -5,10 +5,16 @@ import gry.Karta;
 import rankingi.Gracz;
 import rankingi.WynikGry;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 public class Makao implements Gra {
+    private ArrayList<Karta> taliaKart = new ArrayList<>();
+    private ArrayList<Karta> taliaGracza = new ArrayList<>();
+    private ArrayList<Karta> taliaKomputera = new ArrayList<>();
+
     @Override
     public void przywitajGracza(Gracz nowyGracz) {
         System.out.println("Cześć " + nowyGracz.pobierzNick() + ", witaj w grze " + "Makao");
@@ -16,7 +22,6 @@ public class Makao implements Gra {
 
     @Override
     public void ustawPoczatkoweWartosci() {
-        HashSet<Karta> taliaKart = new HashSet<>();
         taliaKart.add(new Karta("2_pik", 2));
         taliaKart.add(new Karta("2_kier", 2));
         taliaKart.add(new Karta("2_trefl", 2));
@@ -81,13 +86,29 @@ public class Makao implements Gra {
         taliaKart.add(new Karta("As_kier", 14));
         taliaKart.add(new Karta("As_trefl", 14));
         taliaKart.add(new Karta("As_karo", 14));
+        taliaKart = tasowanie(taliaKart);
+        rozdzielenieKart();
 
+    }
 
+    private void rozdzielenieKart() {
+
+        boolean czyDoKomputera = true;
+        for (int i = 0; i < 10; i++) {
+            if (czyDoKomputera) {
+                taliaKomputera.add(taliaKart.get(i));
+            } else {
+                taliaGracza.add(taliaKart.get(i));
+            }
+            czyDoKomputera = !czyDoKomputera;
+            taliaKart.remove(i);
+        }
 
     }
 
     @Override
     public void rozpocznijGre() {
+        Random random = new Random();
 
     }
 
@@ -105,4 +126,25 @@ public class Makao implements Gra {
     public String podajNazwe() {
         return null;
     }
+
+
+    private ArrayList<Karta> tasowanie(ArrayList<Karta> taliaKart) {
+        Random random = new Random();
+        int iloscPrzetasowan = 30 + random.nextInt(30);
+        for (int i = 0; i < iloscPrzetasowan; i++) {
+            int miejscePierwsze = random.nextInt(taliaKart.size());
+            Karta kartaZJakiegoMiejsca = taliaKart.get(miejscePierwsze);
+            int miejsceDrugie = random.nextInt(taliaKart.size());
+            Karta kartaZJakiegosDrugiegoMiejsca = taliaKart.get(miejsceDrugie);
+
+            taliaKart.remove(miejscePierwsze);
+            taliaKart.remove(miejsceDrugie - 1);
+
+            taliaKart.add(miejsceDrugie, kartaZJakiegoMiejsca);
+            taliaKart.add(miejscePierwsze, kartaZJakiegosDrugiegoMiejsca);
+        }
+        return taliaKart;
+    }
+
 }
+
