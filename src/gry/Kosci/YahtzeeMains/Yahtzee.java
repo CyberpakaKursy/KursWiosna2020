@@ -1,16 +1,15 @@
 package gry.Kosci.YahtzeeMains;
 
 import gry.Gra;
-import gry.Kosci.PC.PCTable;
 import rankingi.Gracz;
 import rankingi.WynikGry;
 
 
 public class Yahtzee implements Gra {
 
-    private String gameName = "Yahtzee";
-    public static Integer scoreInteger;
-    Game game = new Game();;
+    static Integer scoreInteger;
+    String gameName = "Yahtzee";
+    Game game = new Game();
     public  WynikGry score;
 
     @Override

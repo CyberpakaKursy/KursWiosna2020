@@ -1,6 +1,6 @@
 package gry.Kosci.Player;
 
-import gry.Kosci.InterfacesAndTable.Cell;
+import gry.Kosci.PreClasses.Cell;
 
 public class PlayerCell extends  Cell {
 

@@ -52,7 +52,7 @@ public class Game {
     }
 
     public void gameMechanism(){
-        while (!tablePC.ifTableFull() && !tableP.ifTableFull()) {
+        while (tablePC.ifTableFull() && tableP.ifTableFull()) {
             rollRoundP.rollMechanism();
             cellP.cellMechanism();
             rollRoundPC.rollMechanism();

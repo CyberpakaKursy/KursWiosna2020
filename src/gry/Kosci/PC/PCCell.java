@@ -1,6 +1,6 @@
 package gry.Kosci.PC;
 
-import gry.Kosci.InterfacesAndTable.Cell;
+import gry.Kosci.PreClasses.Cell;
 
 public class PCCell extends Cell {
 
