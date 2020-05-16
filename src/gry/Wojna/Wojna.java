@@ -17,12 +17,12 @@ public class Wojna implements Gra {
     private ArrayList<Karta> taliaKomputera;
     String wygrany;
 
+    ArrayList<Karta> listaKart = new ArrayList<>();
 
     @Override
     public void przywitajGracza(Gracz nowyGracz) {
         gracz = nowyGracz;
         System.out.println("Witaj w grze w wojne" + nowyGracz);
-        HashSet<Karta> listaKart = new HashSet<>();
         /*2*/
         listaKart.add(new Karta("2Pik", 2));
         listaKart.add(new Karta("2Trefl", 2));
@@ -98,7 +98,7 @@ public class Wojna implements Gra {
     public void ustawPoczatkoweWartosci() {
         wynik = 0;
         ArrayList<Karta> talia = new ArrayList<>();
-        talia = tasowanie(talia);
+        talia = tasowanie(listaKart);
         rozdzilenieKart(talia);
 
     }
@@ -179,7 +179,7 @@ public class Wojna implements Gra {
             Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
 
             talia.remove(miejscaPierwsze);
-            talia.remove(miejsceDrugie - 1);
+            talia.remove(miejsceDrugie);
             talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
             talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 

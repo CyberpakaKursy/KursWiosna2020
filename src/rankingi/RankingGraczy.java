@@ -11,12 +11,14 @@ public class RankingGraczy {
     private Map<Gra, RankingGry> gryWRankingu = new HashMap<>();
 
     public void doliczNowyWynik(WynikGry wynikTejGry) {
-        Gra graZWyniku = wynikTejGry.pobierzGreTegoWyniku();
-        if (gryWRankingu.containsKey(graZWyniku)) {
-            RankingGry rankingGry = gryWRankingu.get(graZWyniku);
-            rankingGry.dodajNowyWynik(wynikTejGry);
-        } else {
-            gryWRankingu.put(graZWyniku, new RankingGry(wynikTejGry));
+        if(wynikTejGry != null) {
+            Gra graZWyniku = wynikTejGry.pobierzGreTegoWyniku();
+            if (gryWRankingu.containsKey(graZWyniku)) {
+                RankingGry rankingGry = gryWRankingu.get(graZWyniku);
+                rankingGry.dodajNowyWynik(wynikTejGry);
+            } else {
+                gryWRankingu.put(graZWyniku, new RankingGry(wynikTejGry));
+            }
         }
     }
 
