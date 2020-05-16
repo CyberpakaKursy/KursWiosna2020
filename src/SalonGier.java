@@ -37,7 +37,7 @@ public class SalonGier {
 
     }
 
-    private void zagrajWGre(Gra gra, Gracz gracz) {
+    public void zagrajWGre(Gra gra, Gracz gracz) {
         gra.przywitajGracza(gracz);
         gra.ustawPoczatkoweWartosci();
         gra.rozpocznijGre();

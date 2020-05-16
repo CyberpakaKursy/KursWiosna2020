@@ -1,20 +1,7 @@
 package gry.Kosci.PC;
 
-import gry.Kosci.InterfacesAndTable.RollRound;
+import gry.Kosci.PreClasses.RollRound;
 
-public class PCRollRound implements RollRound {
-    @Override
-    public void roll() {
+public class PCRollRound extends RollRound {
 
-    }
-
-    @Override
-    public void reRolls() {
-
-    }
-
-    @Override
-    public void rollMechanism() {
-
-    }
 }

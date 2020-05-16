@@ -9,26 +9,20 @@ import java.util.*;
 
 public class Wojna implements Gra {
     private Gracz gracz;
-    private String nazwaGry = "gry/Wojna";
+    private String nazwaGry = "Wojna";
     private int wynik;
     private Integer wartosc;
     private String nazwa;
     private ArrayList<Karta> taliaGracza;
     private ArrayList<Karta> taliaKomputera;
+    String wygrany;
 
-    /*  List ListaKart = new ArrayList(); */
+    ArrayList<Karta> listaKart = new ArrayList<>();
 
-    /*   public static void(){
-           System.out.println("Jak się nazywasz? :)");
-           Gracz nowyGracz = new Gracz(skaner.next());
-           System.out.println("Witaj" + nickGracza.pobierzNick() + "w grze w wojne");
-       }
-   */
     @Override
     public void przywitajGracza(Gracz nowyGracz) {
         gracz = nowyGracz;
         System.out.println("Witaj w grze w wojne" + nowyGracz);
-        HashSet<Karta> listaKart = new HashSet<>();
         /*2*/
         listaKart.add(new Karta("2Pik", 2));
         listaKart.add(new Karta("2Trefl", 2));
@@ -104,7 +98,7 @@ public class Wojna implements Gra {
     public void ustawPoczatkoweWartosci() {
         wynik = 0;
         ArrayList<Karta> talia = new ArrayList<>();
-        talia = tasowanie(talia);
+        talia = tasowanie(listaKart);
         rozdzilenieKart(talia);
 
     }
@@ -113,39 +107,44 @@ public class Wojna implements Gra {
         taliaGracza = new ArrayList<>();
         taliaKomputera = new ArrayList<>();
         boolean czyDoKomputera = true;
-        for (Karta karta: talia ) {
+        for (Karta karta : talia) {
             if (czyDoKomputera) {
                 taliaKomputera.add(karta);
-            }else {
+            } else {
                 taliaGracza.add(karta);
             }
-            czyDoKomputera= !czyDoKomputera;
+            czyDoKomputera = !czyDoKomputera;
         }
     }
 
     @Override
     public void rozpocznijGre() {
 
-        while (taliaGracza.size()>0 && taliaKomputera.size()>0) {
+        while (taliaGracza.size() > 0 && taliaKomputera.size() > 0) {
             /*wyświetleniePierwszejKartyGracza*/
             Karta kartaGracza = taliaGracza.get(0);
             taliaGracza.remove(0);
-            System.out.println("Twoja Pierwsza Karta to : " +  kartaGracza);
+            System.out.println("Twoja Pierwsza Karta to : " + kartaGracza);
 
             /*wyświetleniePierwszejKartyKomputera*/
             Karta kartaKomputera = taliaKomputera.get(0);
             taliaKomputera.remove(0);
-            System.out.println(" Pierwsza Karta Komputera to: " +  kartaKomputera);
-            if (kartaGracza.pobierzWartoscKarty()>kartaKomputera.pobierzWartoscKarty()) {
-
-            }if (kartaGracza.pobierzWartoscKarty()<kartaKomputera.pobierzWartoscKarty()) {
-
-            }else {
+            System.out.println(" Pierwsza Karta Komputera to: " + kartaKomputera);
+            if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()) {
+                taliaKomputera.remove(kartaKomputera);
+                taliaGracza.add(kartaKomputera);
+            }
+            if (kartaGracza.pobierzWartoscKarty() < kartaKomputera.pobierzWartoscKarty()) {
+                taliaGracza.remove(kartaGracza);
+                taliaKomputera.add(kartaGracza);
+            } else {
                 /*wojna*/
+                taliaGracza.remove(kartaGracza);
+                taliaKomputera.remove(kartaKomputera);
             }
         }
 
-        }
+    }
 
 
     @Override
@@ -156,16 +155,23 @@ public class Wojna implements Gra {
     @Override
     public void zakonczGre() {
 
+        if (taliaGracza.size() == 0) {
+            wygrany = "Komputer";
+        } else {
+            wygrany = "TY";
+        }
+        System.out.println("Dziękujemy za udział w grze Wojna. Wygrał/eś/aś" + wygrany);
     }
 
     @Override
     public String podajNazwe() {
-        return null;
+        return nazwaGry;
     }
+
     private ArrayList tasowanie(ArrayList<Karta> talia) {
         Random random = new Random();
         int iloscPrzetasowan = 40 + random.nextInt(30);
-        for (int i = 0; i < iloscPrzetasowan; i++) ;
+        for (int i = 0; i < iloscPrzetasowan; i++)
         {
             int miejscaPierwsze = random.nextInt(talia.size());
             Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
@@ -173,7 +179,7 @@ public class Wojna implements Gra {
             Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
 
             talia.remove(miejscaPierwsze);
-            talia.remove(miejsceDrugie - 1);
+            talia.remove(miejsceDrugie);
             talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
             talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 
