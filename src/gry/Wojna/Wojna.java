@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Wojna implements Gra {
     private Gracz gracz;
-    private String nazwaGry = "gry/Wojna";
+    private String nazwaGry = "Wojna";
     private int wynik;
     private Integer wartosc;
     private String nazwa;
@@ -165,13 +165,13 @@ public class Wojna implements Gra {
 
     @Override
     public String podajNazwe() {
-        return null;
+        return nazwaGry;
     }
 
     private ArrayList tasowanie(ArrayList<Karta> talia) {
         Random random = new Random();
         int iloscPrzetasowan = 40 + random.nextInt(30);
-        for (int i = 0; i < iloscPrzetasowan; i++) ;
+        for (int i = 0; i < iloscPrzetasowan; i++)
         {
             int miejscaPierwsze = random.nextInt(talia.size());
             Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
