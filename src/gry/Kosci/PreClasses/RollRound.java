@@ -38,12 +38,10 @@ public class RollRound {
     public void reRolls(){
         boolean ifReRoll;
         int i = 0;
-        int a;
         Random random = new Random();
 
         do {
-            a = random.nextInt(1);
-            if(a==1)
+            if(random.nextBoolean())
             {
                 ifReRoll = true;
                 roll(whichDices());

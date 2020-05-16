@@ -16,6 +16,15 @@ public class Table {
     private Integer yahtzee = null;
     private Integer chance = null;
     private Integer yahtzeeBonus = null;
+    private Integer yahtzeeBonusCounter = null;
+
+    public Integer getYahtzeeBonusCounter() {
+        return yahtzeeBonusCounter;
+    }
+
+    public void setYahtzeeBonusCounter(Integer yahtzeeBonusCounter) {
+        this.yahtzeeBonusCounter = yahtzeeBonusCounter;
+    }
 
     public Integer getAces() {
         return aces;
