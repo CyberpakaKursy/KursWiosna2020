@@ -1,4 +1,4 @@
-package gry.Kosci.InterfacesAndTable;
+package gry.Kosci.PreClasses;
 
 public class Table {
     private Integer aces = null;
@@ -16,6 +16,15 @@ public class Table {
     private Integer yahtzee = null;
     private Integer chance = null;
     private Integer yahtzeeBonus = null;
+    private Integer yahtzeeBonusCounter = null;
+
+    public Integer getYahtzeeBonusCounter() {
+        return yahtzeeBonusCounter;
+    }
+
+    public void setYahtzeeBonusCounter(Integer yahtzeeBonusCounter) {
+        this.yahtzeeBonusCounter = yahtzeeBonusCounter;
+    }
 
     public Integer getAces() {
         return aces;
@@ -138,21 +147,23 @@ public class Table {
     }
 
     public boolean ifTableFull() {
-        if(getAces() == null) return false;
-        else if(getTwos() == null) return false;
-        else if(getThrees() == null) return false;
-        else if(getFours() == null) return false;
-        else if(getFives() == null) return false;
-        else if(getSixes() == null) return false;
-        //else if(getUpperBonus() == null) return false;
-        else if(getThreeOfKind() == null) return false;
-        else if(getFourOfKind() == null) return false;
-        else if(getFullHouse() == null) return false;
-        else if(getLowStraight() == null) return false;
-        else if(getHighStraight() == null) return false;
-        else if(getYahtzee() == null) return false;
-        else if(getChance() == null) return false;
+        boolean var;
+        if(getAces() == null) var = true;
+        else if(getTwos() == null) var =  true;
+        else if(getThrees() == null) var =  true;
+        else if(getFours() == null) var = true;
+        else if(getFives() == null) var =  true;
+        else if(getSixes() == null) var = true;
+        //else if(getUpperBonus() == null) var = true;
+        else if(getThreeOfKind() == null) var =  true;
+        else if(getFourOfKind() == null) var =  true;
+        else if(getFullHouse() == null) var =  true;
+        else if(getLowStraight() == null) var =  true;
+        else if(getHighStraight() == null) var =  true;
+        else if(getYahtzee() == null) var = true;
+        else if(getChance() == null) var = true;
         //else if(getYahtzeeBonus() == null) return false;
-        else return true;
+        else var =  false;
+        return var;
     }
 }

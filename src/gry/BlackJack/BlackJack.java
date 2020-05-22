@@ -157,6 +157,7 @@ public class BlackJack implements Gra {
 
 
 
+
     public Integer podajWartoscTali(ArrayList<Karta> talia){
         Integer suma = 0;
         for (Karta karta:talia){

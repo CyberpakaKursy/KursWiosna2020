@@ -1,6 +1,6 @@
 package gry.Kosci.Player;
 
-import gry.Kosci.InterfacesAndTable.Table;
+import gry.Kosci.PreClasses.Table;
 
 public class PlayerTable extends Table {
 

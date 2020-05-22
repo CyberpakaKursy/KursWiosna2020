@@ -52,11 +52,11 @@ public class Game {
     }
 
     public void gameMechanism(){
-        while (!tablePC.ifTableFull() && !tableP.ifTableFull()) {
+        while (tablePC.ifTableFull() && tableP.ifTableFull()) {
             rollRoundP.rollMechanism();
-            cellP.cellMechanism();
+            tableP = (PlayerTable) cellP.cellMechanism(rollRoundP.getDices(),tableP);
             rollRoundPC.rollMechanism();
-            cellPC.cellMechanism();
+            tablePC = (PCTable) cellPC.cellMechanism(rollRoundPC.getDices(),tablePC);
         }
     }
     public void finalCounting() {}

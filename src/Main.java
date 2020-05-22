@@ -1,5 +1,6 @@
 import gry.Gra;
 import gry.KolkoIKrzyzyk;
+import gry.Wojna.Wojna;
 import rankingi.Gracz;
 
 import java.util.Scanner;
@@ -9,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner skaner = new Scanner(System.in);
 
-        SalonGier testowyTalonGier = new SalonGier("Wspaniale Testowy Salon Gier", new KolkoIKrzyzyk());
+        SalonGier testowyTalonGier = new SalonGier("Wspaniale Testowy Salon Gier", new KolkoIKrzyzyk(), new Wojna());
         System.out.println("Witaj w salonie gier " + testowyTalonGier.nazwaSalonuGier + "!");
 
         System.out.println("Powiedz, kim jesteś?");
@@ -34,10 +35,15 @@ public class Main {
 
             switch (Integer.valueOf(wybor)) {
                 case (0):
+
                 default:
                     System.out.println("Zagrajmy zatem w losową grę...");
                     testowyTalonGier.zagrajWLosoweGre(nowyGracz);
                     break;
+                case(1):
+                    testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(0),nowyGracz);
+                case(2):
+                    testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(1),nowyGracz);
             }
         }
     }
