@@ -6,9 +6,7 @@ import rankingi.Gracz;
 import rankingi.WynikGry;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 
 public class Makao implements Gra {
     private ArrayList<Karta> taliaKart = new ArrayList<>();
@@ -107,9 +105,10 @@ public class Makao implements Gra {
     }
 
     @Override
-    public void rozpocznijGre() {
+    public boolean rozpocznijGre() {
         Random random = new Random();
 
+        return false;
     }
 
     @Override

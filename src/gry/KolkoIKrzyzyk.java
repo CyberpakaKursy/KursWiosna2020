@@ -3,7 +3,6 @@ package gry;
 import rankingi.Gracz;
 import rankingi.WynikGry;
 
-import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -30,7 +29,7 @@ public class KolkoIKrzyzyk implements Gra {
     }
 
     @Override
-    public void rozpocznijGre() {
+    public boolean rozpocznijGre() {
         Scanner skaner = new Scanner(System.in);
         Random generatorLosowosci = new Random();
 
@@ -89,6 +88,7 @@ public class KolkoIKrzyzyk implements Gra {
         }
 
         wynik = new WynikGry(this, gracz, czyKolejGracza ? 0 : 1);
+        return czyKolejGracza;
     }
 
     private boolean wygrana() {

@@ -1,7 +1,6 @@
 package gry.Kosci.YahtzeeMains;
 
 import gry.Gra;
-import gry.Kosci.PC.PCTable;
 import rankingi.Gracz;
 import rankingi.WynikGry;
 
@@ -25,8 +24,9 @@ public class Yahtzee implements Gra {
     }
 
     @Override
-    public void rozpocznijGre() {
+    public boolean rozpocznijGre() {
         game.gameMechanism();
+        return false;
     }
 
     @Override
