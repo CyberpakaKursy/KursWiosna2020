@@ -124,23 +124,26 @@ public class Wojna implements Gra {
             /*wyświetleniePierwszejKartyGracza*/
             Karta kartaGracza = taliaGracza.get(0);
             taliaGracza.remove(0);
-            System.out.println("Twoja Pierwsza Karta to : " + kartaGracza);
+            System.out.println("Twoja Karta to : " + kartaGracza.pobierzNazweKarty());
 
             /*wyświetleniePierwszejKartyKomputera*/
             Karta kartaKomputera = taliaKomputera.get(0);
             taliaKomputera.remove(0);
-            System.out.println(" Pierwsza Karta Komputera to: " + kartaKomputera);
+            System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
             if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()) {
                 taliaKomputera.remove(kartaKomputera);
                 taliaGracza.add(kartaKomputera);
-            }
-            if (kartaGracza.pobierzWartoscKarty() < kartaKomputera.pobierzWartoscKarty()) {
+                System.out.println("W tej turze lepszą kartę miałeś ty");
+            }else if (kartaGracza.pobierzWartoscKarty() < kartaKomputera.pobierzWartoscKarty()) {
                 taliaGracza.remove(kartaGracza);
                 taliaKomputera.add(kartaGracza);
+                System.out.println("W tej turze lepszą kartę miał komputer");
             } else {
                 /*wojna*/
                 taliaGracza.remove(kartaGracza);
                 taliaKomputera.remove(kartaKomputera);
+                System.out.println("W tej turze mieliście równe karty");
+
             }
         }
 
@@ -179,8 +182,8 @@ public class Wojna implements Gra {
             Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
 
             talia.remove(miejscaPierwsze);
-            talia.remove(miejsceDrugie);
             talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
+            talia.remove(miejsceDrugie);
             talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 
         }
