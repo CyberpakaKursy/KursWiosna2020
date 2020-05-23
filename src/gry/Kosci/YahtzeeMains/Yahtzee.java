@@ -24,8 +24,9 @@ public class Yahtzee implements Gra {
     }
 
     @Override
-    public void rozpocznijGre() {
+    public boolean rozpocznijGre() {
         game.gameMechanism();
+        return false;
     }
 
     @Override
@@ -35,7 +36,7 @@ public class Yahtzee implements Gra {
 
     @Override
     public void zakonczGre() {
-        game.ending();
+        scoreInteger = game.ending();
     }
 
     @Override

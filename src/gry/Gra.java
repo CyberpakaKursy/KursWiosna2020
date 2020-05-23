@@ -8,7 +8,7 @@ public interface Gra {
 
     void ustawPoczatkoweWartosci();
 
-    void rozpocznijGre();
+    boolean rozpocznijGre();
 
     WynikGry pobierzWynik();
 
