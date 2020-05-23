@@ -5,6 +5,7 @@ import gry.Karta;
 import rankingi.Gracz;
 import rankingi.WynikGry;
 
+import java.awt.event.KeyAdapter;
 import java.util.*;
 
 public class Makao implements Gra {
@@ -105,17 +106,29 @@ public class Makao implements Gra {
 
     }
 
-    public boolean czyGraczMaPasujacaKarte(Karta kartaPodana) {
+    public boolean czyGraczMaPasujacaKarte(Karta kartaPodana, boolean czyTuraGracza) {
         String[] daneKarty = kartaPodana.pobierzNazweKarty().split("_");
-        for (Karta karta : taliaGracza) {
-            if (karta.pobierzWartoscKarty() == kartaPodana.pobierzWartoscKarty()) {
-                return true;
-            } else if (karta.pobierzNazweKarty().contains(daneKarty[1])) {
-                return true;
+        if (czyTuraGracza) {
+            for (Karta karta : taliaGracza) {
+                if (karta.pobierzWartoscKarty() == kartaPodana.pobierzWartoscKarty()) {
+                    return true;
+                } else if (karta.pobierzNazweKarty().contains(daneKarty[1])) {
+                    return true;
+                }
+
+            }
+            return false;
+        } else {
+            for (Karta karta : taliaKomputera) {
+                if (karta.pobierzWartoscKarty() == kartaPodana.pobierzWartoscKarty()) {
+                    return true;
+                } else if (karta.pobierzNazweKarty().contains(daneKarty[1])) {
+                    return true;
+                }
+                return false;
             }
 
         }
-        return false;
     }
 
     @Override
@@ -130,9 +143,63 @@ public class Makao implements Gra {
         }
         System.out.println(kartaPierwsza);
         taliaKart.remove(kartaPierwsza);
-        czyGraczMaPasujacaKarte(kartaPierwsza);
-        String nazwaKarty = skanerKart.nextLine();
+        kartyNaStole.add(kartaPierwsza);
+        boolean czyTuraGracza = true;
+        while (true) {
+            if (czyTuraGracza) {
+                if (czyGraczMaPasujacaKarte(kartaPierwsza, czyTuraGracza)) {
+                    for (Karta karta:taliaGracza) {
+                        System.out.println(karta.pobierzNazweKarty());
+                    }
+                    int nmrRzuconaKarta = skanerKart.nextInt();
+                    Karta rzuconaKarta = taliaGracza.get(nmrRzuconaKarta);
+                    if (kartaPierwsza.pobierzWartoscKarty() == nmrRzuconaKarta || kartaPierwsza.pobierzNazweKarty().equals(nmrRzuconaKarta)) {
+                        taliaGracza.remove(rzuconaKarta);
+                        kartyNaStole.add(rzuconaKarta);
+                        System.out.println(kartyNaStole);
+                        if (KartyFunkcyjne.czyFunkcyjna(rzuconaKarta)) {
+                            if (KartyFunkcyjne.czyPobracKarte(rzuconaKarta)) {
+                                if (rzuconaKarta.pobierzNazweKarty().contains("2")) {
+                                    int i = 2;
+                                    taliaGracza.add(taliaKart.get(i));
+                                    taliaKart.remove(i);
+                                } else if (rzuconaKarta.pobierzNazweKarty().contains("3")) {
+                                    int i = 3;
+                                    taliaGracza.add(taliaKart.get(i));
+                                    taliaKart.remove(i);
+                                } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_kier")) {
+                                    int i = 5;
+                                    taliaGracza.add(taliaKart.get(i));
+                                    taliaKart.remove(i);
+                                } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_pik")) {
+                                    int i = 5;
+                                    taliaGracza.add(taliaKart.get(i));
+                                    taliaKart.remove(i);
+                                } else {
+                                    return;
+                                }
+                            } else if (KartyFunkcyjne.czyPominacKolejke(rzuconaKarta)){
+                            }
+                        } else{
+                            return;
+                        }
+                    } else {
+                        System.out.println("Podales/as zla karte.");
+                    }
+                } else {
+                    System.out.println("Nie masz karty, zeby wykonac ruch");
+                }
 
+
+
+            } else {
+
+            }
+            if (taliaGracza.size() <= 0 || taliaKomputera.size() <= 0) {
+                break;
+            }
+            czyTuraGracza = !czyTuraGracza;
+        }
     }
 
 
