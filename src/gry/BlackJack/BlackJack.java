@@ -96,6 +96,7 @@ public class BlackJack implements Gra {
         listaKart.add(new Karta("ASKaro", 11));
         listaKart.add(new Karta("ASKier", 11));
 
+
         ArrayList<Karta> talia = new ArrayList<>();
         Random random = new Random();
         int iloscPrzetasowan = 30 + random.nextInt(30);
@@ -108,10 +109,11 @@ public class BlackJack implements Gra {
             Karta kartaZJakiegoDrugiegoMiejsca = talia.get((miejsceDrugie));
 
             talia.remove(miejscePierwsze);
-            talia.remove(miejsceDrugie - 1);
 
             talia.add(miejsceDrugie, kartaZJakiegoMiejsca);
             talia.add(miejscePierwsze, kartaZJakiegoDrugiegoMiejsca);
+
+            talia.remove(miejsceDrugie);
 
         }
 
@@ -132,36 +134,34 @@ public class BlackJack implements Gra {
                         System.out.println("Przegrana");
                     } else if (podajWartoscTali(taliaGracza) == 21) {
                         System.out.println("Wygrana!");
-                    } else if (czyKolejkaGracza){
-                        if (Karta.pobierzNazweKarty().contains("ASPik")){
+                    } else if (czyKolejkaGracza) {
+                        if (Karta.pobierzNazweKarty().contains("ASPik")) {
                             return true;
-                        }else if{
-                            if (Karta.pobierzNazweKarty().contains("ASTrefl")){
-                                return  true;
-                            }
-
-                            }
+                        }
+                    } else if {
+                        if (Karta.pobierzNazweKarty().contains("ASTrefl")) {
+                            return true;
                         }
 
                     }
-
-                    }
-                System.out.println("Zaczyna gracz!");
-            } else {
-                System.out.println("Zaczyna komputer!");
+                }
 
             }
 
         }
+        System.out.println("Zaczyna gracz!");
+    } else
+
+    {
+        System.out.println("Zaczyna komputer!");
+
     }
 
 
-
-
-    public Integer podajWartoscTali(ArrayList<Karta> talia){
+    public Integer podajWartoscTali(ArrayList<Karta> talia) {
         Integer suma = 0;
-        for (Karta karta:talia){
-         suma = suma + karta.pobierzWartoscKarty();
+        for (Karta karta : talia) {
+            suma = suma + karta.pobierzWartoscKarty();
         }
         return suma;
     }
@@ -174,6 +174,10 @@ public class BlackJack implements Gra {
 
     @Override
     public void zakonczGre() {
+        System.out.println("Dzięki za grę!");
+    }
+
+    {
 
     }
 
@@ -182,3 +186,6 @@ public class BlackJack implements Gra {
         return null;
     }
 }
+
+
+

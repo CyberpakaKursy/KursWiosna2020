@@ -5,12 +5,11 @@ import gry.Karta;
 import rankingi.Gracz;
 import rankingi.WynikGry;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import java.util.Random;
-=======
 import java.util.*;
->>>>>>> 88696f913b063dac3453be05783a5fd1b7c5e47a
+
 
 public class Makao implements Gra {
     private ArrayList<Karta> taliaKart = new ArrayList<>();
