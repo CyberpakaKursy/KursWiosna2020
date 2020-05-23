@@ -154,7 +154,6 @@ public class Table {
         else if(getFours() == null) var = true;
         else if(getFives() == null) var =  true;
         else if(getSixes() == null) var = true;
-        //else if(getUpperBonus() == null) var = true;
         else if(getThreeOfKind() == null) var =  true;
         else if(getFourOfKind() == null) var =  true;
         else if(getFullHouse() == null) var =  true;
@@ -162,7 +161,6 @@ public class Table {
         else if(getHighStraight() == null) var =  true;
         else if(getYahtzee() == null) var = true;
         else if(getChance() == null) var = true;
-        //else if(getYahtzeeBonus() == null) return false;
         else var =  false;
         return var;
     }

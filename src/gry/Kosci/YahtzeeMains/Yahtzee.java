@@ -36,7 +36,7 @@ public class Yahtzee implements Gra {
 
     @Override
     public void zakonczGre() {
-        game.ending();
+        scoreInteger = game.ending();
     }
 
     @Override

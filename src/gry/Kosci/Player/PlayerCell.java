@@ -78,7 +78,7 @@ public class PlayerCell extends Cell {
                     } else System.out.println("The cell you've chosen has already been occupied! Choose another one.");
                     break;
                 case 11:
-                    if (table.getYahtzee() == null || table.getYahtzeeBonusCounter()>1) {
+                    if (table.getYahtzee() == null || table.getYahtzeeBonusCounter()>0) {
                         chosenCell = 11;
                     } else System.out.println("The cell you've chosen has already been occupied! Choose another one.");
                     break;
