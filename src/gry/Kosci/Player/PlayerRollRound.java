@@ -41,7 +41,7 @@ public class PlayerRollRound extends RollRound {
                 ifReRoll = true;
                 roll(whichDices());
                 System.out.print("Dices which you've thrown: ");
-                for(int j=0; j<getDices().length;j++) System.out.print(getDices()[j] + " ");
+                for(int j=0; j<getDices().size();j++) System.out.print(getDices().get(j) + " ");
                 System.out.println();
                 i++;
             } else {

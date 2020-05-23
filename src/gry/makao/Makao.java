@@ -5,8 +5,10 @@ import gry.Karta;
 import rankingi.Gracz;
 import rankingi.WynikGry;
 
-import java.awt.event.KeyAdapter;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.*;
+
 
 public class Makao implements Gra {
     private ArrayList<Karta> taliaKart = new ArrayList<>();
@@ -132,7 +134,7 @@ public class Makao implements Gra {
     }
 
     @Override
-    public void rozpocznijGre() {
+    public boolean rozpocznijGre() {
         Random random = new Random();
         Scanner skanerKart = new Scanner(System.in);
         //tworzenie karty na stole//
@@ -191,6 +193,7 @@ public class Makao implements Gra {
                 }
 
 
+<<<<<<< HEAD
 
             } else {
 
@@ -200,6 +203,9 @@ public class Makao implements Gra {
             }
             czyTuraGracza = !czyTuraGracza;
         }
+=======
+        return false;
+>>>>>>> cec01c848b53d043b23c3c2ab445fd97315c4c28
     }
 
 

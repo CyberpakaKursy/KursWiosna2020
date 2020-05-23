@@ -118,7 +118,7 @@ public class Wojna implements Gra {
     }
 
     @Override
-    public void rozpocznijGre() {
+    public boolean rozpocznijGre() {
 
         while (taliaGracza.size() > 0 && taliaKomputera.size() > 0) {
             /*wyświetleniePierwszejKartyGracza*/
@@ -144,6 +144,10 @@ public class Wojna implements Gra {
             }
         }
 
+<<<<<<< HEAD
+        return false;
+=======
+>>>>>>> 88696f913b063dac3453be05783a5fd1b7c5e47a
     }
 
 
