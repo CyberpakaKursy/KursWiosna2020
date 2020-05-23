@@ -2,7 +2,7 @@ package gry;
 
 public class Karta {
 
-    public static boolean pobierzNazweKarty;
+    public boolean pobierzNazweKarty;
     private Integer wartosc;
     private String nazwa;
 
@@ -14,7 +14,7 @@ public class Karta {
     }
 
 
-    public static String pobierzNazweKarty(){
+    public String pobierzNazweKarty(){
         return nazwa;
     }
 
