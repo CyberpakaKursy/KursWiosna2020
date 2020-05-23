@@ -127,34 +127,51 @@ public class BlackJack implements Gra {
         ArrayList<Karta> taliaKomputera = new ArrayList<>();
         while (koniecGry) {
             if (czyKolejkaGracza) {
-                taliaGracza.size();
+                System.out.println("Zaczyna gracz!");
                 if (taliaGracza.size() > 0) {
-                    podajWartoscTali(taliaGracza);
                     if (podajWartoscTali(taliaGracza) > 21) {
                         System.out.println("Przegrana");
+                        break;
                     } else if (podajWartoscTali(taliaGracza) == 21) {
                         System.out.println("Wygrana!");
-                    } else if (czyKolejkaGracza) {
-                        if (Karta.pobierzNazweKarty().contains("ASPik")) {
-                            return true;
+                        break;
+                    } else {
+                        if (czyTaliaMa2Asy(taliaGracza)) {
+                            break;
                         }
-                    } else if {
+                    } else {
                         if (Karta.pobierzNazweKarty().contains("ASTrefl")) {
-                            return true;
+                            break;
+                        } else {
+                            if (Karta.pobierzNazweKarty().contains("ASKaro")) {
+                                break;
+                            } else {
+                                if (Karta.pobierzNazweKarty().contains("ASKier")) {
+                                    break;
+                                }
+
+                            }
                         }
 
                     }
+                    System.out.println("Zaczyna komputer!");
                 }
-
             }
-
         }
-        System.out.println("Zaczyna gracz!");
-    } else
+    }
 
-    {
-        System.out.println("Zaczyna komputer!");
-
+    private boolean czyTaliaMa2Asy(ArrayList<Karta> talia) {
+        Integer licznik = 0;
+        for (Karta karta:talia) {
+            if (karta.pobierzNazweKarty().contains("AS")){
+                licznik ++;
+            }
+        }
+        if (licznik >= 2){
+            return true;
+        } else {
+            return  false;
+        }
     }
 
 
@@ -186,6 +203,3 @@ public class BlackJack implements Gra {
         return null;
     }
 }
-
-
-
