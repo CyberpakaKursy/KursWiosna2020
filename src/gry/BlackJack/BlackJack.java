@@ -139,7 +139,7 @@ public class BlackJack implements Gra {
                         if (czyTaliaMa2Asy(taliaGracza)) {
                             break;
                         }
-                    } else {
+                    } /*else {
                         if (Karta.pobierzNazweKarty().contains("ASTrefl")) {
                             break;
                         } else {
@@ -153,11 +153,12 @@ public class BlackJack implements Gra {
                             }
                         }
 
-                    }
+                    }*/
                     System.out.println("Zaczyna komputer!");
                 }
             }
         }
+        return false;
     }
 
     private boolean czyTaliaMa2Asy(ArrayList<Karta> talia) {
