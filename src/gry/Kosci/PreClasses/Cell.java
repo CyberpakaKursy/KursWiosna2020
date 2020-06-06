@@ -83,85 +83,57 @@ public class Cell {
     }
 
     public Table scoreCounter(Integer chosenCell, List<Integer> dices, Table table) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (Integer element : dices) {
+            if (map.containsKey(element)) {
+                map.put(element, map.get(element) + 1);
+            } else {
+                map.put(element, 1);
+            }
+        }
         switch (chosenCell) {
             case 0:
                 table.setAces(0);
-                for (Integer i : dices) {
-                    if (dices.get(i) == 1) table.setAces(table.getAces() + 1);
-                }
+                if (map.containsKey(1)) table.setAces(map.get(1));
                 break;
             case 1:
                 table.setTwos(0);
-                for (Integer i : dices) {
-                    if (dices.get(i) == 2) table.setAces(table.getTwos() + 2);
-                }
+                if (map.containsKey(2)) table.setTwos(map.get(2)*2);
                 break;
             case 2:
                 table.setThrees(0);
-                for (Integer i : dices) {
-                    if (dices.get(i) == 3) table.setAces(table.getThrees() + 3);
-                }
+                if (map.containsKey(3)) table.setThrees(map.get(3)*3);
                 break;
             case 3:
                 table.setFours(0);
-                for (Integer i : dices) {
-                    if (dices.get(i) == 4) table.setAces(table.getFours() + 4);
-                }
+                if (map.containsKey(4)) table.setFours(map.get(4)*4);
                 break;
             case 4:
                 table.setFives(0);
-                for (Integer i : dices) {
-                    if (dices.get(i) == 5) table.setAces(table.getFives() + 5);
-                }
+                if (map.containsKey(5)) table.setFives(map.get(5)*5);
                 break;
             case 5:
                 table.setSixes(0);
-                for (Integer i : dices) {
-                    if (dices.get(i) == 6) table.setAces(table.getSixes() + 6);
-                }
+                if (map.containsKey(6)) table.setSixes(map.get(6)*6);
                 break;
             case 6:
                 table.setThreeOfKind(0);
-                Map<Integer, Integer> map1 = new HashMap<>();
-                for (Integer element : dices) {
-                    if (map1.containsKey(element)) {
-                        map1.put(element, map1.get(element) + 1);
-                    } else {
-                        map1.put(element, 1);
-                    }
-                }
-                if (map1.containsValue(3)) {
+                if (map.containsValue(3)) {
                     for (Integer i : dices) {
-                        table.setThreeOfKind(table.getThreeOfKind() + dices.get(i));
+                        table.setThreeOfKind(table.getThreeOfKind() + i);
                     }
                 }
                 break;
             case 7:
                 table.setFourOfKind(0);
-                Map<Integer, Integer> map2 = new HashMap<>();
-                for (Integer element : dices) {
-                    if (map2.containsKey(element)) {
-                        map2.put(element, map2.get(element) + 1);
-                    } else {
-                        map2.put(element, 1);
-                    }
-                }
-                if (map2.containsValue(4)) {
+                if (map.containsValue(4)) {
                     for (Integer i : dices) {
-                        table.setFourOfKind(table.getFourOfKind() + dices.get(i));
+                        table.setFourOfKind(table.getFourOfKind() + i);
                     }
                 }
                 break;
             case 8:
                 table.setFullHouse(0);
-                Map<Integer, Integer> map = new HashMap<>();
-                for (Integer element : dices) {
-                    if (map.containsKey(element)) {
-                        map.put(element, map.get(element) + 1);
-                    } else {
-                        map.put(element, 1);
-                    }
-                }
                 if (map.containsValue(2) && map.containsValue(3)) {
                     table.setFullHouse(25);
                 }
@@ -185,7 +157,7 @@ public class Cell {
                 }
                 break;
             case 11:
-                if (dices.get(0).equals(dices.get(1)) && dices.get(1).equals(dices.get(2)) && dices.get(2).equals(dices.get(3)) && dices.get(3).equals(dices.get(4)) && dices.get(4).equals(dices.get(5))) {
+                if (map.containsValue(5)) {
                     table.setYahtzee(50);
                     table.setYahtzeeBonusCounter(table.getYahtzeeBonusCounter() + 1);
                     if (table.getYahtzeeBonusCounter() > 1) table.setYahtzeeBonus(table.getYahtzeeBonus() + 100);
@@ -193,7 +165,7 @@ public class Cell {
                 break;
             case 12:
                 for (Integer i : dices) {
-                    table.setChance(table.getChance() + dices.get(i));
+                    table.setChance(table.getChance() + i);
                 }
                 break;
         }
