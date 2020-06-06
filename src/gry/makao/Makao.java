@@ -134,6 +134,22 @@ public class Makao implements Gra {
         return false;
     }
 
+    public boolean czyKomputerMaPasujacaKarte(Karta kartaPodana, boolean czyTuraGracza) {
+        String[] daneKarty = kartaPodana.pobierzNazweKarty().split("_");
+        if (!czyTuraGracza) {
+            for (Karta karta : taliaKomputera) {
+                if (karta.pobierzWartoscKarty() == kartaPodana.pobierzWartoscKarty()) {
+                    return true;
+                } else if (karta.pobierzNazweKarty().contains(daneKarty[1])) {
+                    return true;
+                }
+                return false;
+            }
+
+        }
+        return false;
+    }
+
     @Override
     public boolean rozpocznijGre() {
         Random random = new Random();
@@ -144,68 +160,124 @@ public class Makao implements Gra {
         while (KartyFunkcyjne.czyFunkcyjna(kartaPierwsza)) {
             kartaPierwsza = taliaKart.get(random.nextInt(taliaKart.size()));
         }
-        System.out.println(kartaPierwsza);
+        System.out.println(kartaPierwsza.pobierzNazweKarty);
         taliaKart.remove(kartaPierwsza);
         kartyNaStole.add(kartaPierwsza);
         boolean czyTuraGracza = true;
         while (true) {
             if (czyTuraGracza) {
-                if (czyGraczMaPasujacaKarte(kartaPierwsza, czyTuraGracza)) {
-                    for (Karta karta : taliaGracza) {
-                        System.out.println(karta.pobierzNazweKarty());
+                while (true) {
+                    if (czyGraczMaPasujacaKarte(kartaPierwsza, czyTuraGracza)) {
+                        for (Karta karta : taliaGracza) {
+                            System.out.println(karta.pobierzNazweKarty());
+                        }
+                        int nmrRzuconaKarta = skanerKart.nextInt();
+                        Karta rzuconaKarta = taliaGracza.get(nmrRzuconaKarta);
+
+                        if (kartaPierwsza.pobierzWartoscKarty() == nmrRzuconaKarta || kartaPierwsza.pobierzNazweKarty().equals(nmrRzuconaKarta)) {
+                            taliaGracza.remove(rzuconaKarta);
+                            kartyNaStole.add(rzuconaKarta);
+                            System.out.println(rzuconaKarta.pobierzNazweKarty);
+                            if (KartyFunkcyjne.czyFunkcyjna(rzuconaKarta)) {
+                                if (KartyFunkcyjne.czyPobracKarte(rzuconaKarta)) {
+                                    if (rzuconaKarta.pobierzNazweKarty().contains("2")) {
+                                        int i = 2;
+                                        taliaKomputera.add(taliaKart.get(i));
+                                        taliaKart.remove(i);
+                                    } else if (rzuconaKarta.pobierzNazweKarty().contains("3")) {
+                                        int i = 3;
+                                        taliaKomputera.add(taliaKart.get(i));
+                                        taliaKart.remove(i);
+                                    } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_kier")) {
+                                        int i = 5;
+                                        taliaKomputera.add(taliaKart.get(i));
+                                        taliaKart.remove(i);
+                                    } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_pik")) {
+                                        int i = 5;
+                                        taliaKomputera.add(taliaKart.get(i));
+                                        taliaKart.remove(i);
+                                    } else {
+                                        return false;
+                                    }
+                                } else if (KartyFunkcyjne.czyPominacKolejke(rzuconaKarta)) {
+                                    czyTuraGracza=true;
+                                }
+                            } else {
+                                return false;
+                            }
+
+                        } else {
+                            System.out.println("Podales/as zla karte.");
+                        }
+                    } else {
+                        System.out.println("Nie masz karty, zeby wykonac ruch");
+                        taliaGracza.add(taliaKart.get(0));
+                        taliaKart.remove(0);
                     }
-                    int nmrRzuconaKarta = skanerKart.nextInt();
-                    Karta rzuconaKarta = taliaGracza.get(nmrRzuconaKarta);
-                    if (kartaPierwsza.pobierzWartoscKarty() == nmrRzuconaKarta || kartaPierwsza.pobierzNazweKarty().equals(nmrRzuconaKarta)) {
-                        taliaGracza.remove(rzuconaKarta);
-                        kartyNaStole.add(rzuconaKarta);
-                        System.out.println(kartyNaStole);
-                        if (KartyFunkcyjne.czyFunkcyjna(rzuconaKarta)) {
-                            if (KartyFunkcyjne.czyPobracKarte(rzuconaKarta)) {
-                                if (rzuconaKarta.pobierzNazweKarty().contains("2")) {
-                                    int i = 2;
-                                    taliaKomputera.add(taliaKart.get(i));
-                                    taliaKart.remove(i);
-                                } else if (rzuconaKarta.pobierzNazweKarty().contains("3")) {
-                                    int i = 3;
-                                    taliaKomputera.add(taliaKart.get(i));
-                                    taliaKart.remove(i);
-                                } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_kier")) {
-                                    int i = 5;
-                                    taliaKomputera.add(taliaKart.get(i));
-                                    taliaKart.remove(i);
-                                } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_pik")) {
-                                    int i = 5;
-                                    taliaKomputera.add(taliaKart.get(i));
-                                    taliaKart.remove(i);
+                    break;
+
+                }
+            } else {
+                Random randomKomputera = new Random();
+                if (!czyTuraGracza) {
+                    while (true) {
+                        if (czyKomputerMaPasujacaKarte(kartaPierwsza, !czyTuraGracza)) {
+                            for (Karta karta : taliaKomputera) {
+                            }
+                            int nmrRzuconaKarta = random.nextInt(taliaKomputera.size());
+                            Karta rzuconaKarta = taliaKomputera.get(nmrRzuconaKarta);
+
+                            if (kartaPierwsza.pobierzWartoscKarty() == nmrRzuconaKarta || kartaPierwsza.pobierzNazweKarty().equals(nmrRzuconaKarta)) {
+                                taliaKomputera.remove(rzuconaKarta);
+                                kartyNaStole.add(rzuconaKarta);
+                                System.out.println(kartyNaStole);
+                                if (KartyFunkcyjne.czyFunkcyjna(rzuconaKarta)) {
+                                    if (KartyFunkcyjne.czyPobracKarte(rzuconaKarta)) {
+                                        if (rzuconaKarta.pobierzNazweKarty().contains("2")) {
+                                            int i = 2;
+                                            taliaGracza.add(taliaKart.get(i));
+                                            taliaKart.remove(i);
+                                        } else if (rzuconaKarta.pobierzNazweKarty().contains("3")) {
+                                            int i = 3;
+                                            taliaGracza.add(taliaKart.get(i));
+                                            taliaKart.remove(i);
+                                        } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_kier")) {
+                                            int i = 5;
+                                            taliaGracza.add(taliaKart.get(i));
+                                            taliaKart.remove(i);
+                                        } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_pik")) {
+                                            int i = 5;
+                                            taliaGracza.add(taliaKart.get(i));
+                                            taliaKart.remove(i);
+                                        } else {
+                                            return false;
+                                        }
+                                    } else if (KartyFunkcyjne.czyPominacKolejke(rzuconaKarta)) {
+                                        czyTuraGracza=false;
+                                    }
                                 } else {
                                     return false;
                                 }
-                            } else if (KartyFunkcyjne.czyPominacKolejke(rzuconaKarta)) {
-                                czyTuraGracza=!czyTuraGracza;
                             }
                         } else {
-                            return false;
+                            System.out.println("Komputer nie ma karty dla ruchu");
+                            taliaKomputera.add(taliaKart.get(0));
+                            taliaKart.remove(0);
                         }
-                    } else {
-                        System.out.println("Podales/as zla karte.");
+                        break;
                     }
-                } else {
-                    System.out.println("Nie masz karty, zeby wykonac ruch");
                 }
-
-
-            } else {
-                czyTuraGracza=!czyTuraGracza;
-                Random randomKomputera = new Random();
-
-
             }
             if (taliaGracza.size() <= 0 || taliaKomputera.size() <= 0) {
                 break;
             }
-            czyTuraGracza = !czyTuraGracza;
+            if (taliaKart.size() == 0) {
+                taliaKart.add(kartyNaStole.remove(kartyNaStole.size()));
+                taliaKart = tasowanie(taliaKart);
+            }
         }
+        czyTuraGracza = !czyTuraGracza;
+
         return false;
     }
 
@@ -222,26 +294,26 @@ public class Makao implements Gra {
 
     @Override
     public String podajNazwe() {
-        return null;
+        return "Makao";
     }
 
 
-    private ArrayList<Karta> tasowanie(ArrayList<Karta> taliaKart) {
+    private ArrayList tasowanie(ArrayList<Karta> talia) {
         Random random = new Random();
-        int iloscPrzetasowan = 30 + random.nextInt(30);
+        int iloscPrzetasowan = 40 + random.nextInt(30);
         for (int i = 0; i < iloscPrzetasowan; i++) {
-            int miejscePierwsze = random.nextInt(taliaKart.size());
-            Karta kartaZJakiegoMiejsca = taliaKart.get(miejscePierwsze);
-            int miejsceDrugie = random.nextInt(taliaKart.size());
-            Karta kartaZJakiegosDrugiegoMiejsca = taliaKart.get(miejsceDrugie);
+            int miejscaPierwsze = random.nextInt(talia.size());
+            Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
+            int miejsceDrugie = random.nextInt(talia.size());
+            Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
 
-            taliaKart.remove(miejscePierwsze);
-            taliaKart.remove(miejsceDrugie - 1);
+            talia.remove(miejscaPierwsze);
+            talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
+            talia.remove(miejsceDrugie);
+            talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 
-            taliaKart.add(miejsceDrugie, kartaZJakiegoMiejsca);
-            taliaKart.add(miejscePierwsze, kartaZJakiegosDrugiegoMiejsca);
         }
-        return taliaKart;
+        return talia;
     }
 
 }
