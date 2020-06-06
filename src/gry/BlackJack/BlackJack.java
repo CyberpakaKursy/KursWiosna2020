@@ -148,11 +148,13 @@ public class BlackJack implements Gra {
                             } else {
                                 if (Karta.pobierzNazweKarty().contains("ASKier")) {
                                     break;
+                                } else {
+                                    if (Karta.pobierzNazweKarty().contains("ASPik")) {
+                                        break;
+                                    }
                                 }
-
                             }
                         }
-
                     }
                     System.out.println("Zaczyna komputer!");
                 }
@@ -162,15 +164,15 @@ public class BlackJack implements Gra {
 
     private boolean czyTaliaMa2Asy(ArrayList<Karta> talia) {
         Integer licznik = 0;
-        for (Karta karta:talia) {
-            if (karta.pobierzNazweKarty().contains("AS")){
-                licznik ++;
+        for (Karta karta : talia) {
+            if (karta.pobierzNazweKarty().contains("AS")) {
+                licznik++;
             }
         }
-        if (licznik >= 2){
+        if (licznik >= 2) {
             return true;
         } else {
-            return  false;
+            return false;
         }
     }
 
