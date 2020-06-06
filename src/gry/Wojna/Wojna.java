@@ -144,56 +144,69 @@ public class Wojna implements Gra {
                 System.out.println("W tej turze mieliście równe karty");
                 System.out.println("teraz rospoczyna się wojna");
 
+
                 ArrayList<Karta> kartyPodczasWojny = new ArrayList<>();
-                kartyPodczasWojny.add(kartaGracza);
-                kartyPodczasWojny.add(kartaKomputera);
 
-                taliaGracza.remove(kartaGracza);
-                taliaKomputera.remove(kartaKomputera);
+                while (kartaGracza.pobierzWartoscKarty() == kartaKomputera.pobierzWartoscKarty()) {
 
-                /*losowanie karty1*/
-                Karta kartaGraczaPodczasWojny = taliaGracza.get(0);
-                taliaGracza.remove(0);
-                System.out.println("Twoja Karta to : " + kartaGracza.pobierzNazweKarty());
+                    kartyPodczasWojny.add(kartaGracza);
+                    kartyPodczasWojny.add(kartaKomputera);
 
-                Karta kartaKomputeraPodczasWojny = taliaKomputera.get(0);
-                taliaKomputera.remove(0);
-                System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
+                    taliaGracza.remove(kartaGracza);
+                    taliaKomputera.remove(kartaKomputera);
 
-                kartyPodczasWojny.add(kartaGraczaPodczasWojny);
-                kartyPodczasWojny.add(kartaKomputeraPodczasWojny);
-                taliaGracza.remove(kartaGraczaPodczasWojny);
-                taliaKomputera.remove(kartaKomputeraPodczasWojny);
+                    /*branie karty1*/
+                    Karta kartaGraczaPodczasWojny = taliaGracza.get(0);
+                    taliaGracza.remove(0);
+                    System.out.println("Twoja Karta to : " + kartaGracza.pobierzNazweKarty());
 
-                /*losowanie karty2 finalne*/
-                Karta karta2GraczaPodczasWojny = taliaGracza.get(0);
-                taliaGracza.remove(0);
-                System.out.println("Twoja Karta to : " + kartaGracza.pobierzNazweKarty());
+                    Karta kartaKomputeraPodczasWojny = taliaKomputera.get(0);
+                    taliaKomputera.remove(0);
+                    System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
 
-                Karta karta2KomputeraPodczasWojny = taliaKomputera.get(0);
-                taliaKomputera.remove(0);
-                System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
+                    kartyPodczasWojny.add(kartaGraczaPodczasWojny);
+                    kartyPodczasWojny.add(kartaKomputeraPodczasWojny);
+                    taliaGracza.remove(kartaGraczaPodczasWojny);
+                    taliaKomputera.remove(kartaKomputeraPodczasWojny);
 
-                kartyPodczasWojny.add(karta2GraczaPodczasWojny);
-                kartyPodczasWojny.add(karta2KomputeraPodczasWojny);
-                taliaGracza.remove(karta2GraczaPodczasWojny);
-                taliaKomputera.remove(karta2KomputeraPodczasWojny);
 
-                if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()) {
-                    for (Karta karta: kartyPodczasWojny) {
-                        taliaGracza.add(karta);
+                    /*branie karty3 finalne*/
+
+                    Karta karta2GraczaPodczasWojny = taliaGracza.get(0);
+                    taliaGracza.remove(0);
+                    System.out.println("Twoja Karta to : " + kartaGracza.pobierzNazweKarty());
+
+                    Karta karta2KomputeraPodczasWojny = taliaKomputera.get(0);
+                    taliaKomputera.remove(0);
+                    System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
+
+                    kartyPodczasWojny.add(karta2GraczaPodczasWojny);
+                    kartyPodczasWojny.add(karta2KomputeraPodczasWojny);
+                    taliaGracza.remove(karta2GraczaPodczasWojny);
+                    taliaKomputera.remove(karta2KomputeraPodczasWojny);
+
+                    if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()) {
+                        for (Karta karta : kartyPodczasWojny) {
+                            taliaGracza.add(karta);
+                        }
+
+                        System.out.println("W wojnie wygrałeś ty");
                     }
-
-                    System.out.println("W wojnie wygrałeś ty");
-                }
-                if (kartaGracza.pobierzWartoscKarty() < kartaKomputera.pobierzWartoscKarty()) {
-                    for (Karta karta: kartyPodczasWojny) {
-                        taliaKomputera.add(karta);
+                    if (kartaGracza.pobierzWartoscKarty() < kartaKomputera.pobierzWartoscKarty()) {
+                        for (Karta karta : kartyPodczasWojny) {
+                            taliaKomputera.add(karta);
+                        }
+                        System.out.println("W wojnie wygrał komputer");
                     }
-                    System.out.println("W wojnie wygrał komputer");
+                    if (kartaGracza.pobierzWartoscKarty() == kartaKomputera.pobierzWartoscKarty()) {
+                         kartaKomputera = taliaKomputera.get(0);
+                        taliaKomputera.remove(0);
+
+                         kartaGracza = taliaGracza.get(0);
+                        taliaGracza.remove(0);
+                    }
                 }
             }
-
         }
 
 
@@ -225,8 +238,7 @@ public class Wojna implements Gra {
     private ArrayList tasowanie(ArrayList<Karta> talia) {
         Random random = new Random();
         int iloscPrzetasowan = 40 + random.nextInt(30);
-        for (int i = 0; i < iloscPrzetasowan; i++)
-        {
+        for (int i = 0; i < iloscPrzetasowan; i++) {
             int miejscaPierwsze = random.nextInt(talia.size());
             Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
             int miejsceDrugie = random.nextInt(talia.size());

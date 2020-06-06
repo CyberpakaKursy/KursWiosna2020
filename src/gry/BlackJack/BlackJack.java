@@ -103,19 +103,17 @@ public class BlackJack implements Gra {
 
         for (int i = 0; i < iloscPrzetasowan; i++) ;
         {
-            int miejscePierwsze = random.nextInt(talia.size());
-            Karta kartaZJakiegoMiejsca = talia.get(miejscePierwsze);
-            int miejsceDrugie = random.nextInt(talia.size());
-            Karta kartaZJakiegoDrugiegoMiejsca = talia.get((miejsceDrugie));
+                int miejscaPierwsze = random.nextInt(talia.size());
+                Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
+                int miejsceDrugie = random.nextInt(talia.size());
+                Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
 
-            talia.remove(miejscePierwsze);
+                talia.remove(miejscaPierwsze);
+                talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
+                talia.remove(miejsceDrugie);
+                talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 
-            talia.add(miejsceDrugie, kartaZJakiegoMiejsca);
-            talia.add(miejscePierwsze, kartaZJakiegoDrugiegoMiejsca);
-
-            talia.remove(miejsceDrugie);
-
-        }
+            }
 
     }
 
@@ -135,42 +133,39 @@ public class BlackJack implements Gra {
                     } else if (podajWartoscTali(taliaGracza) == 21) {
                         System.out.println("Wygrana!");
                         break;
+                    } else if (czyTaliaMa2Asy(taliaGracza)) {
+                        System.out.println("Wygrana!");
+                        break;
                     } else {
-                        if (czyTaliaMa2Asy(taliaGracza)) {
-                            break;
-                        }
-                    } else {
-                        if (Karta.pobierzNazweKarty().contains("ASTrefl")) {
-                            break;
-                        } else {
-                            if (Karta.pobierzNazweKarty().contains("ASKaro")) {
-                                break;
-                            } else {
-                                if (Karta.pobierzNazweKarty().contains("ASKier")) {
-                                    break;
-                                }
-
-                            }
-                        }
-
+                        System.out.println("Gracz jeszcze nie skonczyl gry.");
+                        taliaGracza.add (talia.get(0));
+                        talia.remove(0);
                     }
+
                     System.out.println("Zaczyna komputer!");
+                } else {
+                    taliaGracza.add (talia.get(0));
+                    talia.remove(0);
                 }
+            } else {
+                // ToDO Kolejka Komputera
             }
         }
+        return false;
     }
+
 
     private boolean czyTaliaMa2Asy(ArrayList<Karta> talia) {
         Integer licznik = 0;
-        for (Karta karta:talia) {
-            if (karta.pobierzNazweKarty().contains("AS")){
-                licznik ++;
+        for (Karta karta : talia) {
+            if (karta.pobierzNazweKarty().contains("AS")) {
+                licznik++;
             }
         }
-        if (licznik >= 2){
+        if (licznik >= 2) {
             return true;
         } else {
-            return  false;
+            return false;
         }
     }
 
@@ -200,6 +195,6 @@ public class BlackJack implements Gra {
 
     @Override
     public String podajNazwe() {
-        return null;
+        return "Black Jack";
     }
 }
