@@ -111,11 +111,11 @@ public class Remik implements Gra {
     public boolean rozpocznijGre() {
         Integer kolej = 1;
         while (true) {
-            if (/*sprawdzSeta()*/){
+            /*if (*//*sprawdzSeta()*//*){
                 //jeśli ma seta podaj opcję
             }else {
                 //musisz dobrać kartę.
-            }
+            }*/
         }
         return false;
     }
