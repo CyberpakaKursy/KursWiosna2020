@@ -1,3 +1,4 @@
+import gry.BlackJack.BlackJack;
 import gry.Gra;
 import gry.KolkoIKrzyzyk;
 import gry.Kosci.YahtzeeMains.Yahtzee;
@@ -11,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner skaner = new Scanner(System.in);
 
-        SalonGier testowyTalonGier = new SalonGier("Wspaniale Testowy Salon Gier", new KolkoIKrzyzyk(), new Wojna(), new Yahtzee());
+        SalonGier testowyTalonGier = new SalonGier("Wspaniale Testowy Salon Gier", new KolkoIKrzyzyk(), new Wojna(), new Yahtzee(), new BlackJack());
         System.out.println("Witaj w salonie gier " + testowyTalonGier.nazwaSalonuGier + "!");
 
         System.out.println("Powiedz, kim jesteś?");
@@ -47,6 +48,9 @@ public class Main {
                     testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(1),nowyGracz);
                 case(3):
                     testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(2),nowyGracz);
+                case(4):
+                    testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(3),nowyGracz);
+
             }
         }
     }

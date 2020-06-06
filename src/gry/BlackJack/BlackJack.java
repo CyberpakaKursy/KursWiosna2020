@@ -103,17 +103,16 @@ public class BlackJack implements Gra {
 
         for (int i = 0; i < iloscPrzetasowan; i++) ;
         {
-            int miejscePierwsze = random.nextInt(talia.size());
-            Karta kartaZJakiegoMiejsca = talia.get(miejscePierwsze);
-            int miejsceDrugie = random.nextInt(talia.size());
-            Karta kartaZJakiegoDrugiegoMiejsca = talia.get((miejsceDrugie));
+                int miejscePierwsze = random.nextInt(talia.size());
+                Karta kartaZJakiegoMiejsca = talia.get(miejscePierwsze);
+                int miejsceDrugie = random.nextInt(talia.size());
+                Karta kartaZJakiegosDrugiegoMiejsca = talia.get(miejsceDrugie);
 
-            talia.remove(miejscePierwsze);
+                talia.remove(miejscePierwsze);
+                talia.remove(miejsceDrugie - 1);
 
-            talia.add(miejsceDrugie, kartaZJakiegoMiejsca);
-            talia.add(miejscePierwsze, kartaZJakiegoDrugiegoMiejsca);
-
-            talia.remove(miejsceDrugie);
+                talia.add(miejsceDrugie, kartaZJakiegoMiejsca);
+                talia.add(miejscePierwsze, kartaZJakiegosDrugiegoMiejsca);
 
         }
 
@@ -140,12 +139,14 @@ public class BlackJack implements Gra {
                         break;
                     } else {
                         System.out.println("Gracz jeszcze nie skonczyl gry.");
-
+                        taliaGracza.add (talia.get(0));
+                        talia.remove(0);
                     }
 
                     System.out.println("Zaczyna komputer!");
                 } else {
-                    // ToDo Pobranie Karty
+                    taliaGracza.add (talia.get(0));
+                    talia.remove(0);
                 }
             } else {
                 // ToDO Kolejka Komputera
@@ -195,6 +196,6 @@ public class BlackJack implements Gra {
 
     @Override
     public String podajNazwe() {
-        return null;
+        return "Black Jack";
     }
 }
