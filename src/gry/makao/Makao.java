@@ -131,6 +131,7 @@ public class Makao implements Gra {
             }
 
         }
+        return false;
     }
 
     @Override
@@ -150,7 +151,7 @@ public class Makao implements Gra {
         while (true) {
             if (czyTuraGracza) {
                 if (czyGraczMaPasujacaKarte(kartaPierwsza, czyTuraGracza)) {
-                    for (Karta karta:taliaGracza) {
+                    for (Karta karta : taliaGracza) {
                         System.out.println(karta.pobierzNazweKarty());
                     }
                     int nmrRzuconaKarta = skanerKart.nextInt();
@@ -163,27 +164,28 @@ public class Makao implements Gra {
                             if (KartyFunkcyjne.czyPobracKarte(rzuconaKarta)) {
                                 if (rzuconaKarta.pobierzNazweKarty().contains("2")) {
                                     int i = 2;
-                                    taliaGracza.add(taliaKart.get(i));
+                                    taliaKomputera.add(taliaKart.get(i));
                                     taliaKart.remove(i);
                                 } else if (rzuconaKarta.pobierzNazweKarty().contains("3")) {
                                     int i = 3;
-                                    taliaGracza.add(taliaKart.get(i));
+                                    taliaKomputera.add(taliaKart.get(i));
                                     taliaKart.remove(i);
                                 } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_kier")) {
                                     int i = 5;
-                                    taliaGracza.add(taliaKart.get(i));
+                                    taliaKomputera.add(taliaKart.get(i));
                                     taliaKart.remove(i);
                                 } else if (rzuconaKarta.pobierzNazweKarty().contains("Król_pik")) {
                                     int i = 5;
-                                    taliaGracza.add(taliaKart.get(i));
+                                    taliaKomputera.add(taliaKart.get(i));
                                     taliaKart.remove(i);
                                 } else {
-                                    return;
+                                    return false;
                                 }
-                            } else if (KartyFunkcyjne.czyPominacKolejke(rzuconaKarta)){
+                            } else if (KartyFunkcyjne.czyPominacKolejke(rzuconaKarta)) {
+                                czyTuraGracza=!czyTuraGracza;
                             }
-                        } else{
-                            return;
+                        } else {
+                            return false;
                         }
                     } else {
                         System.out.println("Podales/as zla karte.");
@@ -193,9 +195,10 @@ public class Makao implements Gra {
                 }
 
 
-<<<<<<< HEAD
-
             } else {
+                czyTuraGracza=!czyTuraGracza;
+                Random randomKomputera = new Random();
+
 
             }
             if (taliaGracza.size() <= 0 || taliaKomputera.size() <= 0) {
@@ -203,9 +206,7 @@ public class Makao implements Gra {
             }
             czyTuraGracza = !czyTuraGracza;
         }
-=======
         return false;
->>>>>>> cec01c848b53d043b23c3c2ab445fd97315c4c28
     }
 
 

@@ -110,14 +110,14 @@ public class Remik implements Gra {
     @Override
     public boolean rozpocznijGre() {
         Integer kolej = 1;
-        while (true) {
-            if (sprawdzSeta()){
+        /*while (true) {
+            *//*if (*//**//*sprawdzSeta()*//**//*){
                 //jeśli ma seta podaj opcję
             }else {
                 //musisz dobrać kartę.
-            }
-        }
-        return null;
+            }*//*
+        }*/
+        return false;
     }
     private boolean sprawdzSeta(ArrayList<Karta> talia){
         HashMap<Integer, Integer> mapaKart = new HashMap<>();

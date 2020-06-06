@@ -135,32 +135,25 @@ public class BlackJack implements Gra {
                     } else if (podajWartoscTali(taliaGracza) == 21) {
                         System.out.println("Wygrana!");
                         break;
+                    } else if (czyTaliaMa2Asy(taliaGracza)) {
+                        System.out.println("Wygrana!");
+                        break;
                     } else {
-                        if (czyTaliaMa2Asy(taliaGracza)) {
-                            break;
-                        }
-                    } else {
-                        if (Karta.pobierzNazweKarty().contains("ASTrefl")) {
-                            break;
-                        } else {
-                            if (Karta.pobierzNazweKarty().contains("ASKaro")) {
-                                break;
-                            } else {
-                                if (Karta.pobierzNazweKarty().contains("ASKier")) {
-                                    break;
-                                } else {
-                                    if (Karta.pobierzNazweKarty().contains("ASPik")) {
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        System.out.println("Gracz jeszcze nie skonczyl gry.");
+
                     }
+
                     System.out.println("Zaczyna komputer!");
+                } else {
+                    // ToDo Pobranie Karty
                 }
+            } else {
+                // ToDO Kolejka Komputera
             }
         }
+        return false;
     }
+
 
     private boolean czyTaliaMa2Asy(ArrayList<Karta> talia) {
         Integer licznik = 0;
