@@ -103,18 +103,17 @@ public class BlackJack implements Gra {
 
         for (int i = 0; i < iloscPrzetasowan; i++) ;
         {
-                int miejscePierwsze = random.nextInt(talia.size());
-                Karta kartaZJakiegoMiejsca = talia.get(miejscePierwsze);
+                int miejscaPierwsze = random.nextInt(talia.size());
+                Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
                 int miejsceDrugie = random.nextInt(talia.size());
-                Karta kartaZJakiegosDrugiegoMiejsca = talia.get(miejsceDrugie);
+                Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
 
-                talia.remove(miejscePierwsze);
-                talia.remove(miejsceDrugie - 1);
+                talia.remove(miejscaPierwsze);
+                talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
+                talia.remove(miejsceDrugie);
+                talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 
-                talia.add(miejsceDrugie, kartaZJakiegoMiejsca);
-                talia.add(miejscePierwsze, kartaZJakiegosDrugiegoMiejsca);
-
-        }
+            }
 
     }
 
