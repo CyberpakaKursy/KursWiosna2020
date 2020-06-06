@@ -13,9 +13,12 @@ public class Remik implements Gra {
     Scanner scanner = new Scanner(System.in);
     Integer iloscGraczy;
     Integer punktyMaksymalne;
+    Random random = new Random();
     
     private ArrayList<Karta> taliaGracza = new ArrayList<>();
-    private ArrayList<Karta> taliaKomputera = new ArrayList<>();
+    private ArrayList<Karta> taliaKomputera1 = new ArrayList<>();
+    private ArrayList<Karta> taliaKomputera2 = new ArrayList<>();
+    private ArrayList<Karta> taliaKomputera3 = new ArrayList<>();
     private ArrayList<Karta> kartyNaStole = new ArrayList<>();
 
     @Override
@@ -109,14 +112,93 @@ public class Remik implements Gra {
 
     @Override
     public boolean rozpocznijGre() {
-        Integer kolej = 1;
-        /*while (true) {
-            *//*if (*//**//*sprawdzSeta()*//**//*){
-                //jeśli ma seta podaj opcję
-            }else {
-                //musisz dobrać kartę.
-            }*//*
-        }*/
+        if (iloscGraczy ==2) {
+            Integer kolej = random.nextInt(1);
+            while (true) {
+                while (kolej == 0) {
+                    if (sprawdzSeta(taliaGracza)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej++;
+                    }
+                }
+                while (kolej == 1) {
+                    if (sprawdzSeta(taliaKomputera1)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej--;
+                    }
+                }
+            }
+        }
+        else if (iloscGraczy == 3){
+            Integer kolej = random.nextInt(2);
+            while (true) {
+                while (kolej == 0) {
+                    if (sprawdzSeta(taliaGracza)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej++;
+                    }
+                }
+                while (kolej == 1) {
+                    if (sprawdzSeta(taliaKomputera1)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej++;
+                    }
+                }
+                while (kolej == 2) {
+                    if (sprawdzSeta(taliaKomputera2)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej = kolej - 2;
+                    }
+                }
+            }
+        }
+        else {
+            Integer kolej = random.nextInt(3);
+            while (true) {
+                while (kolej == 0) {
+                    if (sprawdzSeta(taliaGracza)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej++;
+                    }
+                }
+                while (kolej == 1) {
+                    if (sprawdzSeta(taliaKomputera1)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej++;
+                    }
+                }
+                while (kolej == 2) {
+                    if (sprawdzSeta(taliaKomputera2)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej++;
+                    }
+                }
+                while (kolej == 3) {
+                    if (sprawdzSeta(taliaKomputera3)) {
+                        //jeśli ma seta podaj opcję
+                    } else {
+                        //musisz dobrać kartę.
+                        kolej = kolej - 3;
+                    }
+                }
+            }
+        }
         return false;
     }
     private boolean sprawdzSeta(ArrayList<Karta> talia){
