@@ -14,7 +14,7 @@ public class Yahtzee implements Gra {
 
     @Override
     public void przywitajGracza(Gracz nowyGracz) {
-        System.out.println("Welcome" + nowyGracz.pobierzNick()+"!");
+        System.out.println("Welcome " + nowyGracz.pobierzNick()+"!");
         System.out.println("Let's play "+podajNazwe()+"!");
     }
 

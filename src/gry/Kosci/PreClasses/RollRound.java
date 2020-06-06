@@ -1,5 +1,6 @@
 package gry.Kosci.PreClasses;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -54,13 +55,14 @@ public class RollRound {
             } else {
                 ifReRoll = false;
             }
-        } while (i<2 && ifReRoll);
+        } while (i<=2 && ifReRoll);
     }
 
     public void rollMechanism(){
-        setWhichD6(new Boolean[6]);
+        setWhichD6(new Boolean[5]);
+        setDices(new ArrayList<>());
         Arrays.fill(getWhichD6(), true);
-
+        for(int i=0;i<5;i++) dices.add(0);
         roll(getWhichD6());
         reRolls();
     }
