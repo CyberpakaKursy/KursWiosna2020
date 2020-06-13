@@ -197,6 +197,9 @@ public class Remik implements Gra {
                         kolej = kolej - 3;
                     }
                 }
+
+                //fixme psulo program
+                break;
             }
         }
         return false;
