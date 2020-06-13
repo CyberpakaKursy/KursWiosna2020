@@ -26,7 +26,7 @@ public class Game {
         tablePC.setFours(null);
         tablePC.setFives(null);
         tablePC.setSixes(null);
-        tablePC.setUpperBonus(null);
+        tablePC.setUpperBonus(0);
         tablePC.setThreeOfKind(null);
         tablePC.setFourOfKind(null);
         tablePC.setFullHouse(null);
@@ -34,7 +34,6 @@ public class Game {
         tablePC.setHighStraight(null);
         tablePC.setYahtzee(null);
         tablePC.setChance(null);
-        tablePC.setYahtzeeBonus(null);
 
         tableP.setAces(null);
         tableP.setTwos(null);
@@ -42,7 +41,7 @@ public class Game {
         tableP.setFours(null);
         tableP.setFives(null);
         tableP.setSixes(null);
-        tableP.setUpperBonus(null);
+        tableP.setUpperBonus(0);
         tableP.setThreeOfKind(null);
         tableP.setFourOfKind(null);
         tableP.setFullHouse(null);
@@ -50,7 +49,6 @@ public class Game {
         tableP.setHighStraight(null);
         tableP.setYahtzee(null);
         tableP.setChance(null);
-        tableP.setYahtzeeBonus(null);
     }
 
     public void gameMechanism(){
@@ -61,8 +59,8 @@ public class Game {
             tablePC = (PCTable) cellPC.cellMechanism(rollRoundPC.getDices(),tablePC);
         }
     }
-    public void finalCounting() {
 
+    public Integer ending() {
         sumPC = tablePC.getAces();
         sumPC =+ tablePC.getTwos();
         sumPC =+ tablePC.getThrees();
@@ -79,7 +77,6 @@ public class Game {
         sumPC =+ tablePC.getLowStraight();
         sumPC =+ tablePC.getHighStraight();
         sumPC =+ tablePC.getYahtzee();
-        sumPC =+ tablePC.getYahtzeeBonus();
 
         sumP = tableP.getAces();
         sumP =+ tableP.getTwos();
@@ -97,10 +94,14 @@ public class Game {
         sumP =+ tableP.getLowStraight();
         sumP =+ tableP.getHighStraight();
         sumP =+ tableP.getYahtzee();
-        sumP =+ tableP.getYahtzeeBonus();
-    }
-    public Integer ending() {
-        finalCounting();
+
+        if(sumP>sumPC){
+            System.out.println("WIN");
+        } else if(sumP==sumPC) {
+            System.out.println("DRAW");
+        } else {
+            System.out.println("DEFEAT");
+        }
 
         return sumP;
     }

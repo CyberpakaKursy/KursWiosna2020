@@ -15,16 +15,6 @@ public class Table {
     private Integer highStraight = null;
     private Integer yahtzee = null;
     private Integer chance = null;
-    private Integer yahtzeeBonus = null;
-    private Integer yahtzeeBonusCounter = null;
-
-    public Integer getYahtzeeBonusCounter() {
-        return yahtzeeBonusCounter;
-    }
-
-    public void setYahtzeeBonusCounter(Integer yahtzeeBonusCounter) {
-        this.yahtzeeBonusCounter = yahtzeeBonusCounter;
-    }
 
     public Integer getAces() {
         return aces;
@@ -136,14 +126,6 @@ public class Table {
 
     public void setChance(Integer chance) {
         this.chance = chance;
-    }
-
-    public Integer getYahtzeeBonus() {
-        return yahtzeeBonus;
-    }
-
-    public void setYahtzeeBonus(Integer yahtzeeBonus) {
-        this.yahtzeeBonus = yahtzeeBonus;
     }
 
     public boolean ifTableFull() {

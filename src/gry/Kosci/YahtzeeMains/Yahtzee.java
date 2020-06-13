@@ -31,7 +31,7 @@ public class Yahtzee implements Gra {
 
     @Override
     public WynikGry pobierzWynik() {
-        return score;
+        return null;
     }
 
     @Override
