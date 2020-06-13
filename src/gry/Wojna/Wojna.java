@@ -149,8 +149,8 @@ public class Wojna implements Gra {
                 kartyPodczasWojny.add(kartaGracza);
                 kartyPodczasWojny.add(kartaKomputera);
 
-                taliaGracza.remove(kartaGracza);
-                taliaKomputera.remove(kartaKomputera);
+                taliaGracza.remove(0);
+                taliaKomputera.remove(0);
 
 
                 while (kartaGracza.pobierzWartoscKarty() == kartaKomputera.pobierzWartoscKarty() && taliaKomputera.size() > 0 && taliaGracza.size() > 0) {
@@ -170,17 +170,15 @@ public class Wojna implements Gra {
                     kartyPodczasWojny.add(kartaZakrytaGraczaPodczasWojny);
                     kartyPodczasWojny.add(kartaZakrytaKomputeraPodczasWojny);
 
-
-
                     /*branie karty3 finalne*/
 
                     kartaGracza = taliaGracza.get(0);
                     taliaGracza.remove(0);
-                    System.out.println("Twoja Karta to : " + kartaGracza.pobierzNazweKarty());
+                    System.out.println("Twoja Karta finalna to : " + kartaGracza.pobierzNazweKarty());
 
                     kartaKomputera = taliaKomputera.get(0);
                     taliaKomputera.remove(0);
-                    System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
+                    System.out.println("  Karta Komputera finalna to: " + kartaKomputera.pobierzNazweKarty());
 
                 }
                 if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()) {
