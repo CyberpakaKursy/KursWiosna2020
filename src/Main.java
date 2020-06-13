@@ -45,14 +45,19 @@ public class Main {
                     break;
                 case (1):
                     testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(0), nowyGracz);
+                    break;
                 case (2):
                     testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(1), nowyGracz);
+                    break;
                 case (3):
                     testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(2), nowyGracz);
+                    break;
                 case (4):
                     testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(3), nowyGracz);
+                    break;
                 case (5):
                     testowyTalonGier.zagrajWGre(testowyTalonGier.listaGierWSalonie.get(4), nowyGracz);
+                    break;
 
             }
         }
