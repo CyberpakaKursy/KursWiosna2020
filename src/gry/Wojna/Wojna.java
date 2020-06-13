@@ -25,6 +25,11 @@ public class Wojna implements Gra {
     public void przywitajGracza(Gracz nowyGracz) {
         gracz = nowyGracz;
         System.out.println("Witaj w grze w wojne" + nowyGracz);
+
+    }
+
+    @Override
+    public void ustawPoczatkoweWartosci() {
         /*2*/
         listaKart.add(new Karta("2Pik", 2));
         listaKart.add(new Karta("2Trefl", 2));
@@ -94,28 +99,21 @@ public class Wojna implements Gra {
         listaKart.add(new Karta("JockerCzerwony", 15));
         listaKart.add(new Karta("JockerCzarny", 15));
 
-    }
-
-    @Override
-    public void ustawPoczatkoweWartosci() {
         wynik = 0;
-        ArrayList<Karta> talia = new ArrayList<>();
-        talia = tasowanie(listaKart);
-        rozdzilenieKart(talia);
+        listaKart = tasowanie(listaKart);
+        rozdzilenieKart(listaKart);
 
     }
 
     private void rozdzilenieKart(ArrayList<Karta> talia) {
         taliaGracza = new ArrayList<>();
         taliaKomputera = new ArrayList<>();
-        boolean czyDoKomputera = true;
-        for (Karta karta : talia) {
-            if (czyDoKomputera) {
-                taliaKomputera.add(karta);
+        for (int i = 0; i < 54; i++) {
+            if (i % 2 == 0) {
+                taliaKomputera.add(talia.get(i));
             } else {
-                taliaGracza.add(karta);
+                taliaGracza.add(talia.get(i));
             }
-            czyDoKomputera = !czyDoKomputera;
         }
     }
 
@@ -137,7 +135,7 @@ public class Wojna implements Gra {
                 taliaGracza.add(kartaKomputera);
                 taliaKomputera.remove(0);
                 taliaKomputera.add(kartaKomputera);
-                System.out.println("W tej turze lepszą kartę miałeś ty" );
+                System.out.println("W tej turze lepszą kartę miałeś ty");
             } else if (kartaGracza.pobierzWartoscKarty() < kartaKomputera.pobierzWartoscKarty()) {
                 taliaGracza.remove(kartaGracza);
                 taliaKomputera.add(kartaGracza);
@@ -155,9 +153,7 @@ public class Wojna implements Gra {
                 taliaKomputera.remove(kartaKomputera);
 
 
-
-
-                while (kartaGracza.pobierzWartoscKarty() == kartaKomputera.pobierzWartoscKarty() && taliaKomputera.size() >0 && taliaGracza.size() >0) {
+                while (kartaGracza.pobierzWartoscKarty() == kartaKomputera.pobierzWartoscKarty() && taliaKomputera.size() > 0 && taliaGracza.size() > 0) {
 
 
                     /*karty zakryte*/
@@ -186,17 +182,15 @@ public class Wojna implements Gra {
                     taliaKomputera.remove(0);
                     System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
 
-                    }
-                if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()){
-                    System.out.println("W wojnie wygrałeś ty :)");
                 }
-                else
+                if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()) {
+                    System.out.println("W wojnie wygrałeś ty :)");
+                } else
 
                     System.out.println("W wojnie wygrał komputer :)");
 
             }
-            }
-
+        }
 
 
         return false;
