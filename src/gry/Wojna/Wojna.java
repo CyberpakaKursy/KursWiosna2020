@@ -230,12 +230,12 @@ public class Wojna implements Gra {
         for (int i = 0; i < iloscPrzetasowan; i++) {
             int miejscaPierwsze = random.nextInt(talia.size());
             Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
+            talia.remove(miejscaPierwsze);
             int miejsceDrugie = random.nextInt(talia.size());
             Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
-
-            talia.remove(miejscaPierwsze);
-            talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
             talia.remove(miejsceDrugie);
+
+            talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
             talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 
         }
