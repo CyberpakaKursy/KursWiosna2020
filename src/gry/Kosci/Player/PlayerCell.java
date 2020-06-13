@@ -19,7 +19,7 @@ public class PlayerCell extends Cell {
         do {
             System.out.println("Type your choice:");
             try {
-                choice = scanner.nextInt();
+                choice = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 choice = 0;
             }
@@ -81,7 +81,7 @@ public class PlayerCell extends Cell {
                     } else System.out.println("The cell you've chosen has already been occupied! Choose another one.");
                     break;
                 case 11:
-                    if (table.getYahtzee() == null || table.getYahtzeeBonusCounter() > 0) {
+                    if (table.getYahtzee() == null) {
                         chosenCell = 11;
                     } else System.out.println("The cell you've chosen has already been occupied! Choose another one.");
                     break;
@@ -92,6 +92,7 @@ public class PlayerCell extends Cell {
                     break;
                 default:
                     System.out.println("The cell you've chosen has already been occupied! Choose another one.");
+                    break;
             }
         } while (chosenCell == null);
         return chosenCell;
@@ -165,11 +166,11 @@ public class PlayerCell extends Cell {
             case 9:
                 table.setLowStraight(0);
                 if (dices.contains(1) && dices.contains(2) && dices.contains(3) && dices.contains(4)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 } else if (dices.contains(2) && dices.contains(3) && dices.contains(4) && dices.contains(5)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 } else if (dices.contains(3) && dices.contains(4) && dices.contains(5) && dices.contains(6)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 }
                 System.out.println("Value signed (Low Straight): " + table.getLowStraight());
                 break;
@@ -183,20 +184,16 @@ public class PlayerCell extends Cell {
                 System.out.println("Value signed (High Straight): " + table.getHighStraight());
                 break;
             case 11:
-                if (map.containsValue(5)) {
+                table.setYahtzee(0);
+                if(map.containsValue(5)) {
                     table.setYahtzee(50);
-                    table.setYahtzeeBonusCounter(table.getYahtzeeBonusCounter() + 1);
-                    if (table.getYahtzeeBonusCounter() > 1) {
-                        table.setYahtzeeBonus(table.getYahtzeeBonus() + 100);
-                        System.out.println("Value signed (Yahtzee Bonus): " + table.getYahtzeeBonus());
-                    } else {
-                        System.out.println("Value signed (Yahtzee): " + table.getYahtzee());
-                    }
                 } else {
-                    System.out.println("Value signed (Yahtzee): " + table.getYahtzee());
+                    table.setYahtzee(0);
                 }
+                System.out.println("Value signed (Yahtzee): " + table.getYahtzee());
                 break;
             case 12:
+                table.setChance(0);
                 for (Integer i : dices) {
                     table.setChance(table.getChance() + i);
                 }

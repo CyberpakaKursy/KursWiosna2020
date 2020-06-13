@@ -68,7 +68,7 @@ public class Cell {
                     }
                     break;
                 case 11:
-                    if (table.getYahtzee() == null || table.getYahtzeeBonusCounter() > 0) {
+                    if (table.getYahtzee() == null) {
                         chosenCell = 11;
                     }
                     break;
@@ -98,23 +98,23 @@ public class Cell {
                 break;
             case 1:
                 table.setTwos(0);
-                if (map.containsKey(2)) table.setTwos(map.get(2)*2);
+                if (map.containsKey(2)) table.setTwos(map.get(2) * 2);
                 break;
             case 2:
                 table.setThrees(0);
-                if (map.containsKey(3)) table.setThrees(map.get(3)*3);
+                if (map.containsKey(3)) table.setThrees(map.get(3) * 3);
                 break;
             case 3:
                 table.setFours(0);
-                if (map.containsKey(4)) table.setFours(map.get(4)*4);
+                if (map.containsKey(4)) table.setFours(map.get(4) * 4);
                 break;
             case 4:
                 table.setFives(0);
-                if (map.containsKey(5)) table.setFives(map.get(5)*5);
+                if (map.containsKey(5)) table.setFives(map.get(5) * 5);
                 break;
             case 5:
                 table.setSixes(0);
-                if (map.containsKey(6)) table.setSixes(map.get(6)*6);
+                if (map.containsKey(6)) table.setSixes(map.get(6) * 6);
                 break;
             case 6:
                 table.setThreeOfKind(0);
@@ -141,11 +141,11 @@ public class Cell {
             case 9:
                 table.setLowStraight(0);
                 if (dices.contains(1) && dices.contains(2) && dices.contains(3) && dices.contains(4)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 } else if (dices.contains(2) && dices.contains(3) && dices.contains(4) && dices.contains(5)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 } else if (dices.contains(3) && dices.contains(4) && dices.contains(5) && dices.contains(6)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 }
                 break;
             case 10:
@@ -157,13 +157,15 @@ public class Cell {
                 }
                 break;
             case 11:
+                table.setYahtzee(0);
                 if (map.containsValue(5)) {
                     table.setYahtzee(50);
-                    table.setYahtzeeBonusCounter(table.getYahtzeeBonusCounter() + 1);
-                    if (table.getYahtzeeBonusCounter() > 1) table.setYahtzeeBonus(table.getYahtzeeBonus() + 100);
+                } else {
+                    table.setYahtzee(0);
                 }
                 break;
             case 12:
+                table.setChance(0);
                 for (Integer i : dices) {
                     table.setChance(table.getChance() + i);
                 }

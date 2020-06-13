@@ -94,61 +94,86 @@ public class BlackJack implements Gra {
         talia.add(new Karta("ASTrefl", 11));
         talia.add(new Karta("ASKaro", 11));
         talia.add(new Karta("ASKier", 11));
-        
+/*
         talia = tasowanie(talia);
     }
-    
-    
+
     private ArrayList tasowanie(ArrayList<Karta> talia) {
         Random random = new Random();
         int iloscPrzetasowan = 40 + random.nextInt(30);
         for (int i = 0; i < iloscPrzetasowan; i++) {
             int miejscaPierwsze = random.nextInt(talia.size());
             Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
+            talia.remove(miejscaPierwsze);
             int miejsceDrugie = random.nextInt(talia.size());
             Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
-
-            talia.remove(miejscaPierwsze);
-            talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
             talia.remove(miejsceDrugie);
+
+            talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
             talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 
         }
         return talia;
     }
-    
+
     @Override
     public boolean rozpocznijGre() {
         boolean koniecGry = false;
         boolean czyKolejkaGracza = true;
+        boolean czyKolejkaKomputera = true;
         ArrayList<Karta> taliaGracza = new ArrayList<>();
         ArrayList<Karta> taliaKomputera = new ArrayList<>();
-        while (koniecGry) {
+        while (!koniecGry) {
             if (czyKolejkaGracza) {
                 System.out.println("Zaczyna gracz!");
                 if (taliaGracza.size() > 0) {
-                    if (podajWartoscTali(taliaGracza) > 21) {
-                        System.out.println("Przegrana");
+                    if (czyTaliaMa2Asy(taliaGracza)) {
+                        System.out.println("Wygrana!");
                         break;
                     } else if (podajWartoscTali(taliaGracza) == 21) {
                         System.out.println("Wygrana!");
                         break;
-                    } else if (czyTaliaMa2Asy(taliaGracza)) {
-                        System.out.println("Wygrana!");
+                    } else if (podajWartoscTali(taliaGracza) > 21) {
+                        System.out.println("Przegrana!");
                         break;
                     } else {
                         System.out.println("Gracz jeszcze nie skonczyl gry.");
-                        taliaGracza.add (talia.get(0));
+                        taliaGracza.add(talia.get(0));
                         talia.remove(0);
                     }
-
+                    for (Karta kartaGracza : taliaGracza) {
+                        System.out.println("W tali gracza jest: " + kartaGracza.pobierzNazweKarty());
+                    }
                     System.out.println("Zaczyna komputer!");
                 } else {
-                    taliaGracza.add (talia.get(0));
+                    taliaGracza.add(talia.get(0));
                     talia.remove(0);
                 }
+                czyKolejkaGracza = !czyKolejkaGracza;
             } else {
-                // ToDO Kolejka Komputera
+                // ToDO kolejka komputera
+                if (czyKolejkaKomputera) {
+                    System.out.println("Zaczyna Komputer!");
+                    if (taliaKomputera.size() > 0) {
+                        if (czyTaliaMa2Asy(taliaKomputera)) {
+                            System.out.println("Wygrana komputera!");
+                            break;
+                        } else if (podajWartoscTali(taliaKomputera) == 21) {
+                            System.out.println("Wygrana komputera!");
+                            break;
+                        } else if (podajWartoscTali(taliaKomputera) > 21) {
+                            System.out.println("Przegrana komputera!");
+                            break;
+                        } else {
+                            System.out.println("Komputer jeszcze nie skonczyl gry.");
+                            taliaKomputera.add(talia.get(0));
+                         talia.remove(0);
+
+                for (Karta kartaKomputera : taliaKomputera) {
+                    System.out.println("W tali komputera jest: " + taliaKomputera);
+
+                }
+                czyKolejkaGracza = !czyKolejkaGracza;
             }
         }
         return false;
@@ -189,12 +214,10 @@ public class BlackJack implements Gra {
         System.out.println("Dzięki za grę!");
     }
 
-    {
-
-    }
-
     @Override
     public String podajNazwe() {
         return "Black Jack";
     }
 }
+
+ */
