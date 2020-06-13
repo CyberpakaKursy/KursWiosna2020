@@ -152,8 +152,17 @@ public class Wojna implements Gra {
                 taliaGracza.remove(kartaGracza);
                 taliaKomputera.remove(kartaKomputera);
 
-
-                while (kartaGracza.pobierzWartoscKarty() == kartaKomputera.pobierzWartoscKarty() && taliaKomputera.size() > 0 && taliaGracza.size() > 0) {
+                while (kartaGracza.pobierzWartoscKarty() == kartaKomputera.pobierzWartoscKarty()) {
+                    if (taliaKomputera.size() < 2 && taliaGracza.size() >= 2) {
+                        System.out.println("Przegrana komputera");
+                        return true;
+                    } else if (taliaGracza.size() < 2 && taliaKomputera.size() >= 2) {
+                        System.out.println("Przegrana gracza");
+                        return false;
+                    } else if (taliaGracza.size() < 2 && taliaKomputera.size() < 2) {
+                        System.out.println("Remis!");
+                        return false;
+                    }
 
 
                     /*karty zakryte*/
@@ -182,12 +191,16 @@ public class Wojna implements Gra {
                     taliaKomputera.remove(0);
                     System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
 
+                    taliaKartPodczasWojny.add(kartaGracza);
+                    taliaKartPodczasWojny.add(kartaKomputera);
                 }
                 if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()) {
                     System.out.println("W wojnie wygrałeś ty :)");
-                } else
-
+                    taliaGracza.addAll(taliaKartPodczasWojny);
+                } else {
                     System.out.println("W wojnie wygrał komputer :)");
+                    taliaKomputera.addAll(taliaKartPodczasWojny);
+                }
 
             }
         }
