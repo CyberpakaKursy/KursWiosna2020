@@ -141,11 +141,11 @@ public class Cell {
             case 9:
                 table.setLowStraight(0);
                 if (dices.contains(1) && dices.contains(2) && dices.contains(3) && dices.contains(4)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 } else if (dices.contains(2) && dices.contains(3) && dices.contains(4) && dices.contains(5)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 } else if (dices.contains(3) && dices.contains(4) && dices.contains(5) && dices.contains(6)) {
-                    table.setHighStraight(30);
+                    table.setLowStraight(30);
                 }
                 break;
             case 10:
