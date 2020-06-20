@@ -114,20 +114,38 @@ public class Remik implements Gra {
     public boolean rozpocznijGre() {
         if (iloscGraczy ==2) {
             Integer kolej = random.nextInt(1);
+            int i;
+            for (i = 0; i < 26; i++) {
+                if (i % 2 == 0) {
+                    taliaKomputera1.add(taliaKart.get(i));
+                } else {
+                    taliaGracza.add(taliaKart.get(i));
+                }
+            }
             while (true) {
                 while (kolej == 0) {
                     if (sprawdzSeta(taliaGracza)) {
+                        for (Karta karta:taliaGracza) {
+                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        }
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        for (Karta karta:taliaGracza) {
+                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        }
+                        i++;
+                        taliaGracza.add(taliaKart.get(i));
                         kolej++;
                     }
                 }
                 while (kolej == 1) {
                     if (sprawdzSeta(taliaKomputera1)) {
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        i++;
+                        taliaKomputera1.add(taliaKart.get(i));
                         kolej--;
                     }
                 }
@@ -135,28 +153,54 @@ public class Remik implements Gra {
         }
         else if (iloscGraczy == 3){
             Integer kolej = random.nextInt(2);
+            int j=0;
+            int i;
+            for (i = 0; i < 39; i++) {
+                if (j==0) {
+                    taliaGracza.add(taliaKart.get(i));
+                    j++;
+                } else if (j==1){
+                    taliaKomputera1.add(taliaKart.get(i));
+                    j++;
+                } else if (j==2){
+                    taliaKomputera2.add(taliaKart.get(i));
+                    j=0;
+                }
+            }
             while (true) {
                 while (kolej == 0) {
                     if (sprawdzSeta(taliaGracza)) {
+                        for (Karta karta:taliaGracza) {
+                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        }
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        for (Karta karta:taliaGracza) {
+                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        }
+                        i++;
+                        taliaGracza.add(taliaKart.get(i));
                         kolej++;
                     }
                 }
                 while (kolej == 1) {
                     if (sprawdzSeta(taliaKomputera1)) {
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        i++;
+                        taliaKomputera1.add(taliaKart.get(i));
                         kolej++;
                     }
                 }
                 while (kolej == 2) {
                     if (sprawdzSeta(taliaKomputera2)) {
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        i++;
+                        taliaKomputera2.add(taliaKart.get(i));
                         kolej = kolej - 2;
                     }
                 }
@@ -164,36 +208,67 @@ public class Remik implements Gra {
         }
         else {
             Integer kolej = random.nextInt(3);
+            int i=0;
+            int j=0;
+            for (i = 0; i < 52; i++) {
+                if (j == 0) {
+                    taliaGracza.add(taliaKart.get(i));
+                    j++;
+                } else if (j == 1){
+                    taliaKomputera1.add(taliaKart.get(i));
+                    j++;
+                } else if (j == 2){
+                    taliaKomputera2.add(taliaKart.get(i));
+                    j++;
+                } else if (j == 3){
+                    taliaKomputera3.add(taliaKart.get(i));
+                    j=0;
+                }
+            }
             while (true) {
                 while (kolej == 0) {
                     if (sprawdzSeta(taliaGracza)) {
+                        for (Karta karta:taliaGracza) {
+                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        }
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        for (Karta karta:taliaGracza) {
+                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        }
+                        i++;
+                        taliaGracza.add(taliaKart.get(i));
                         kolej++;
                     }
                 }
                 while (kolej == 1) {
                     if (sprawdzSeta(taliaKomputera1)) {
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        i++;
+                        taliaKomputera1.add(taliaKart.get(i));
                         kolej++;
                     }
                 }
                 while (kolej == 2) {
                     if (sprawdzSeta(taliaKomputera2)) {
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        i++;
+                        taliaKomputera2.add(taliaKart.get(i));
                         kolej++;
                     }
                 }
                 while (kolej == 3) {
                     if (sprawdzSeta(taliaKomputera3)) {
                         //jeśli ma seta podaj opcję
+                        //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        //musisz dobrać kartę.
+                        i++;
+                        taliaKomputera2.add(taliaKart.get(i));
                         kolej = kolej - 3;
                     }
                 }
