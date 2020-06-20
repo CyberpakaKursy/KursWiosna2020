@@ -128,6 +128,7 @@ public class Remik implements Gra {
                         for (Karta karta:taliaGracza) {
                             System.out.println("Karta gracza "+karta.pobierzNazweKarty());
                         }
+
                         //jeśli ma seta podaj opcję
                         //zabierz karty ze seta i dodaj do talii kart
                     } else {
@@ -292,8 +293,7 @@ public class Remik implements Gra {
         if (mapaKart.containsValue(3)){
             return true;
         }
-        TreeSet<Integer> wartosci = (TreeSet<Integer>) mapaKart.keySet();
-        ArrayList<Integer> posortowaneWartosci = new ArrayList<>(wartosci);
+        ArrayList<Integer> posortowaneWartosci = new ArrayList<>(mapaKart.keySet());
         Collections.sort(posortowaneWartosci);
         Integer poprzedniElement=0;
         Integer licznik=0;
@@ -325,22 +325,22 @@ public class Remik implements Gra {
         return null;
     }
 
-    private ArrayList<Karta> tasowanie(ArrayList<Karta> taliaKart) {
+    private ArrayList tasowanie(ArrayList<Karta> talia) {
         Random random = new Random();
-        int iloscPrzetasowan = 30 + random.nextInt(30);
+        int iloscPrzetasowan = 40 + random.nextInt(30);
         for (int i = 0; i < iloscPrzetasowan; i++) {
-            int miejscePierwsze = random.nextInt(taliaKart.size());
-            Karta kartaZJakiegoMiejsca = taliaKart.get(miejscePierwsze);
-            int miejsceDrugie = random.nextInt(taliaKart.size());
-            Karta kartaZJakiegosDrugiegoMiejsca = taliaKart.get(miejsceDrugie);
+            int miejscaPierwsze = random.nextInt(talia.size());
+            Karta kartaZJakiegosRandomowegoMiejsca = talia.get(miejscaPierwsze);
+            talia.remove(miejscaPierwsze);
+            int miejsceDrugie = random.nextInt(talia.size());
+            Karta kartaZJakiegosDrugiegoRandomowegoMiejsca = talia.get(miejsceDrugie);
+            talia.remove(miejsceDrugie);
 
-            taliaKart.remove(miejscePierwsze);
-            taliaKart.remove(miejsceDrugie - 1);
+            talia.add(miejsceDrugie, kartaZJakiegosRandomowegoMiejsca);
+            talia.add(miejscaPierwsze, kartaZJakiegosDrugiegoRandomowegoMiejsca);
 
-            taliaKart.add(miejsceDrugie, kartaZJakiegoMiejsca);
-            taliaKart.add(miejscePierwsze, kartaZJakiegosDrugiegoMiejsca);
         }
-        return taliaKart;
+        return talia;
     }
     
 
