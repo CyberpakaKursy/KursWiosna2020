@@ -14,7 +14,7 @@ public class Remik implements Gra {
     Integer iloscGraczy;
     Integer punktyMaksymalne;
     Random random = new Random();
-    
+
     private ArrayList<Karta> taliaGracza = new ArrayList<>();
     private ArrayList<Karta> taliaKomputera1 = new ArrayList<>();
     private ArrayList<Karta> taliaKomputera2 = new ArrayList<>();
@@ -112,7 +112,7 @@ public class Remik implements Gra {
 
     @Override
     public boolean rozpocznijGre() {
-        if (iloscGraczy ==2) {
+        if (iloscGraczy == 2) {
             Integer kolej = random.nextInt(1);
             int i;
             for (i = 0; i < 26; i++) {
@@ -125,14 +125,10 @@ public class Remik implements Gra {
             while (true) {
                 while (kolej == 0) {
                     if (sprawdzSeta(taliaGracza)) {
-                        for (Karta karta:taliaGracza) {
-                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
-                        }
-                        //jeśli ma seta podaj opcję
-                        //zabierz karty ze seta i dodaj do talii kart
+                        obsluzSety();
                     } else {
-                        for (Karta karta:taliaGracza) {
-                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        for (Karta karta : taliaGracza) {
+                            System.out.println("Karta gracza " + karta.pobierzNazweKarty());
                         }
                         i++;
                         taliaGracza.add(taliaKart.get(i));
@@ -150,34 +146,33 @@ public class Remik implements Gra {
                     }
                 }
             }
-        }
-        else if (iloscGraczy == 3){
+        } else if (iloscGraczy == 3) {
             Integer kolej = random.nextInt(2);
-            int j=0;
+            int j = 0;
             int i;
             for (i = 0; i < 39; i++) {
-                if (j==0) {
+                if (j == 0) {
                     taliaGracza.add(taliaKart.get(i));
                     j++;
-                } else if (j==1){
+                } else if (j == 1) {
                     taliaKomputera1.add(taliaKart.get(i));
                     j++;
-                } else if (j==2){
+                } else if (j == 2) {
                     taliaKomputera2.add(taliaKart.get(i));
-                    j=0;
+                    j = 0;
                 }
             }
             while (true) {
                 while (kolej == 0) {
                     if (sprawdzSeta(taliaGracza)) {
-                        for (Karta karta:taliaGracza) {
-                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        for (Karta karta : taliaGracza) {
+                            System.out.println("Karta gracza " + karta.pobierzNazweKarty());
                         }
                         //jeśli ma seta podaj opcję
                         //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        for (Karta karta:taliaGracza) {
-                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        for (Karta karta : taliaGracza) {
+                            System.out.println("Karta gracza " + karta.pobierzNazweKarty());
                         }
                         i++;
                         taliaGracza.add(taliaKart.get(i));
@@ -205,37 +200,36 @@ public class Remik implements Gra {
                     }
                 }
             }
-        }
-        else {
+        } else {
             Integer kolej = random.nextInt(3);
-            int i=0;
-            int j=0;
+            int i = 0;
+            int j = 0;
             for (i = 0; i < 52; i++) {
                 if (j == 0) {
                     taliaGracza.add(taliaKart.get(i));
                     j++;
-                } else if (j == 1){
+                } else if (j == 1) {
                     taliaKomputera1.add(taliaKart.get(i));
                     j++;
-                } else if (j == 2){
+                } else if (j == 2) {
                     taliaKomputera2.add(taliaKart.get(i));
                     j++;
-                } else if (j == 3){
+                } else if (j == 3) {
                     taliaKomputera3.add(taliaKart.get(i));
-                    j=0;
+                    j = 0;
                 }
             }
             while (true) {
                 while (kolej == 0) {
                     if (sprawdzSeta(taliaGracza)) {
-                        for (Karta karta:taliaGracza) {
-                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        for (Karta karta : taliaGracza) {
+                            System.out.println("Karta gracza " + karta.pobierzNazweKarty());
                         }
                         //jeśli ma seta podaj opcję
                         //zabierz karty ze seta i dodaj do talii kart
                     } else {
-                        for (Karta karta:taliaGracza) {
-                            System.out.println("Karta gracza "+karta.pobierzNazweKarty());
+                        for (Karta karta : taliaGracza) {
+                            System.out.println("Karta gracza " + karta.pobierzNazweKarty());
                         }
                         i++;
                         taliaGracza.add(taliaKart.get(i));
@@ -279,31 +273,58 @@ public class Remik implements Gra {
         }
         return false;
     }
-    private boolean sprawdzSeta(ArrayList<Karta> talia){
+
+    private void obsluzSety() {
+        Scanner infoOKartach = new Scanner(System.in);
+        System.out.println("Czy chcesz oddac jakies karty jako set");
+        String czyChceszOddacSeta = infoOKartach.nextLine();
+        ArrayList<Karta> kartyDoOddania = new ArrayList<>();
+        if (czyChceszOddacSeta.equals("tak")) {
+            String input = "";
+            while (true) {
+                int nrKarty = 0;
+                for (Karta karta : taliaGracza) {
+                    System.out.println(nrKarty++ + ". Karta gracza " + karta.pobierzNazweKarty());
+                }
+                System.out.println("Podaj nr karty, lub skoncz podawac karty przez wcisniecie \"q\" i enter");
+                input = scanner.nextLine();
+                if (input.equals("q")) {
+                    break;
+                }
+                Integer nrKartyDoOddania = Integer.valueOf(input);
+                kartyDoOddania.add(taliaGracza.get(nrKartyDoOddania));
+                taliaGracza.remove(nrKartyDoOddania);
+            }
+
+            //konwersja kart na punkty z tablicy kartyDoOddania
+        }
+    }
+
+    private boolean sprawdzSeta(ArrayList<Karta> talia) {
         HashMap<Integer, Integer> mapaKart = new HashMap<>();
-        for (Karta element:talia) {
-            if (mapaKart.containsKey(element.pobierzWartoscKarty())){
-                mapaKart.put(element.pobierzWartoscKarty(), mapaKart.get(element.pobierzWartoscKarty())+1);
-            }else {
+        for (Karta element : talia) {
+            if (mapaKart.containsKey(element.pobierzWartoscKarty())) {
+                mapaKart.put(element.pobierzWartoscKarty(), mapaKart.get(element.pobierzWartoscKarty()) + 1);
+            } else {
                 mapaKart.put(element.pobierzWartoscKarty(), 1);
             }
         }
 
-        if (mapaKart.containsValue(3)){
+        if (mapaKart.containsValue(3)) {
             return true;
         }
 
         ArrayList<Integer> posortowaneWartosci = new ArrayList<>(mapaKart.keySet());
         Collections.sort(posortowaneWartosci);
-        Integer poprzedniElement=0;
-        Integer licznik=0;
-        for (Integer element:posortowaneWartosci) {
-            if (element==poprzedniElement+1){
-                licznik+=1;
-            }else {
-                licznik=0;
+        Integer poprzedniElement = 0;
+        Integer licznik = 0;
+        for (Integer element : posortowaneWartosci) {
+            if (element == poprzedniElement + 1) {
+                licznik += 1;
+            } else {
+                licznik = 0;
             }
-            if (licznik>=3){
+            if (licznik >= 3) {
                 return true;
             }
         }
@@ -342,6 +363,6 @@ public class Remik implements Gra {
         }
         return taliaKart;
     }
-    
+
 
 }
