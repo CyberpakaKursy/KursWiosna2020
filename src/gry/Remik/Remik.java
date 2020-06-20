@@ -165,9 +165,7 @@ public class Remik implements Gra {
             while (true) {
                 while (kolej == 0) {
                     if (sprawdzSeta(taliaGracza)) {
-                        for (Karta karta : taliaGracza) {
-                            System.out.println("Karta gracza " + karta.pobierzNazweKarty());
-                        }
+                        obsluzSety();
                         //jeśli ma seta podaj opcję
                         //zabierz karty ze seta i dodaj do talii kart
                     } else {
@@ -222,9 +220,7 @@ public class Remik implements Gra {
             while (true) {
                 while (kolej == 0) {
                     if (sprawdzSeta(taliaGracza)) {
-                        for (Karta karta : taliaGracza) {
-                            System.out.println("Karta gracza " + karta.pobierzNazweKarty());
-                        }
+                        obsluzSety();
                         //jeśli ma seta podaj opcję
                         //zabierz karty ze seta i dodaj do talii kart
                     } else {
@@ -343,7 +339,7 @@ public class Remik implements Gra {
 
     @Override
     public String podajNazwe() {
-        return null;
+        return "Remik";
     }
 
     private ArrayList tasowanie(ArrayList<Karta> talia) {
