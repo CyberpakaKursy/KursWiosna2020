@@ -5,9 +5,7 @@ import gry.Karta;
 import rankingi.Gracz;
 import rankingi.WynikGry;
 
-import javax.naming.ldap.SortResponseControl;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -142,8 +140,10 @@ public class BlackJack implements Gra {
                         System.out.println("Gracz jeszcze nie skonczyl gry.");
                         System.out.println("Czy chcesz pobrać kartę? (false/true)");
                         Scanner scanner = new Scanner(System.in);
-                        boolean czyBracKarte = scanner.nextBoolean();
-                        if (czyBracKarte){
+                        String czyBracKarte = scanner.nextLine();
+                        if (czyBracKarte.toLowerCase().contains("true") ||
+                                czyBracKarte.toLowerCase().contains("tak") ||
+                                czyBracKarte.toLowerCase().equals("t")) {
                             taliaGracza.add(talia.get(0));
                             talia.remove(0);
                         }

@@ -292,8 +292,8 @@ public class Remik implements Gra {
         if (mapaKart.containsValue(3)){
             return true;
         }
-        TreeSet<Integer> wartosci = (TreeSet<Integer>) mapaKart.keySet();
-        ArrayList<Integer> posortowaneWartosci = new ArrayList<>(wartosci);
+
+        ArrayList<Integer> posortowaneWartosci = new ArrayList<>(mapaKart.keySet());
         Collections.sort(posortowaneWartosci);
         Integer poprzedniElement=0;
         Integer licznik=0;
