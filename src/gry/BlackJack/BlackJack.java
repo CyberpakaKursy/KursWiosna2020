@@ -94,7 +94,7 @@ public class BlackJack implements Gra {
         talia.add(new Karta("ASTrefl", 11));
         talia.add(new Karta("ASKaro", 11));
         talia.add(new Karta("ASKier", 11));
-/*
+
         talia = tasowanie(talia);
     }
 
@@ -151,7 +151,6 @@ public class BlackJack implements Gra {
                 }
                 czyKolejkaGracza = !czyKolejkaGracza;
             } else {
-                // ToDO kolejka komputera
                 if (czyKolejkaKomputera) {
                     System.out.println("Zaczyna Komputer!");
                     if (taliaKomputera.size() > 0) {
@@ -167,13 +166,16 @@ public class BlackJack implements Gra {
                         } else {
                             System.out.println("Komputer jeszcze nie skonczyl gry.");
                             taliaKomputera.add(talia.get(0));
-                         talia.remove(0);
+                            talia.remove(0);
 
-                for (Karta kartaKomputera : taliaKomputera) {
-                    System.out.println("W tali komputera jest: " + taliaKomputera);
+                            for (Karta kartaKomputera : taliaKomputera) {
+                                System.out.println("W tali komputera jest: " + taliaKomputera);
 
+                            }
+                            czyKolejkaGracza = !czyKolejkaGracza;
+                        }
+                    }
                 }
-                czyKolejkaGracza = !czyKolejkaGracza;
             }
         }
         return false;
@@ -220,4 +222,3 @@ public class BlackJack implements Gra {
     }
 }
 
- */

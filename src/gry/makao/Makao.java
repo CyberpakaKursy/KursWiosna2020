@@ -1,6 +1,5 @@
 package gry.makao;
 
-import com.sun.deploy.panel.AbstractRadioPropertyGroup;
 import gry.Gra;
 import gry.Karta;
 import rankingi.Gracz;
@@ -146,6 +145,16 @@ public class Makao implements Gra {
                 }
                 return false;
             }
+            return false;
+        } else {
+            for (Karta karta : taliaGracza) {
+                if (karta.pobierzWartoscKarty() == kartaPodana.pobierzWartoscKarty()) {
+                    return true;
+                } else if (karta.pobierzNazweKarty().contains(daneKarty[1])) {
+                    return true;
+                }
+                return false;
+            }
 
         }
         return false;
@@ -173,11 +182,16 @@ public class Makao implements Gra {
             if (czyTuraGracza) {
                 while (true) {
                     if (czyGraczMaPasujacaKarte(kartaPierwsza, czyTuraGracza)) {
-                        Integer licznik = 1;
-                        for (Karta karta : taliaGracza) {
-                            System.out.println(licznik++ + " " + karta.pobierzNazweKarty());
-                        }
-                        int nmrRzuconaKarta = skanerKart.nextInt();
+                       int nmrRzuconaKarta;
+                        do {
+                            System.out.println("podaj nmr karty poprawnie");
+                            Integer licznik = 1;
+
+                            for (Karta karta : taliaGracza) {
+                                System.out.println(licznik++ + " " + karta.pobierzNazweKarty());
+                            }
+                            nmrRzuconaKarta = skanerKart.nextInt();
+                        } while (nmrRzuconaKarta<0 || nmrRzuconaKarta > taliaGracza.size());
                         Karta rzuconaKarta = taliaGracza.get(nmrRzuconaKarta - 1);
 
                         if (kartaPierwsza.pobierzWartoscKarty().equals(rzuconaKarta.pobierzWartoscKarty()) || kartaPierwsza.pobierzNazweKarty().split("_")[1].equals(rzuconaKarta.pobierzNazweKarty().split("_")[1])) {
@@ -206,25 +220,25 @@ public class Makao implements Gra {
                                         int i = 5;
                                         taliaKomputera.add(taliaKart.get(i));
                                         taliaKart.remove(i);
+                                        czyTuraGracza = !czyTuraGracza;
                                     } else {
-                                        czyTuraGracza=!czyTuraGracza;
+                                        czyTuraGracza = !czyTuraGracza;
                                     }
                                 } else if (KartyFunkcyjne.czyPominacKolejke(rzuconaKarta)) {
-                                    if(rzuconaKarta.pobierzNazweKarty().contains("4")) {
+                                    if (rzuconaKarta.pobierzNazweKarty().contains("4")) {
                                         System.out.println("komputer pomija kolejke, podaj karte dla nastepnego ruchu");
-                                    czyTuraGracza = true;
+                                        czyTuraGracza = true;
                                     }
                                 }
                             } else {
-                               czyTuraGracza=!czyTuraGracza;
+                                czyTuraGracza = !czyTuraGracza;
                             }
 
                         } else {
                             System.out.println("Podales/as zla karte.");
                         }
                         kartaPierwsza = rzuconaKarta;
-                    }
-                    else {
+                    } else {
                         System.out.println("Nie masz karty, zeby wykonac ruch");
                         taliaGracza.add(taliaKart.get(0));
                         taliaKart.remove(0);
@@ -273,12 +287,11 @@ public class Makao implements Gra {
                                             czyTuraGracza = true;
                                         }
                                     } else if (KartyFunkcyjne.czyPominacKolejke(rzuconaKarta)) {
-                                        if(rzuconaKarta.pobierzNazweKarty().contains("4")) {
-                                            System.out.println("komputer pomija kolejke, podaj karte dla nastepmego ruchu");
-                                            czyTuraGracza = true;
-                                        }
-                                        else {
-                                            czyTuraGracza=!czyTuraGracza;
+                                        if (rzuconaKarta.pobierzNazweKarty().contains("4")) {
+                                            System.out.println("pomijasz kolejke");
+                                            czyTuraGracza = false;
+                                        } else {
+                                            czyTuraGracza = !czyTuraGracza;
                                         }
                                     }
                                 } else {
@@ -287,6 +300,7 @@ public class Makao implements Gra {
                             }
                             System.out.println("komputer rzucił: " + rzuconaKarta.pobierzNazweKarty());
                             kartaPierwsza = rzuconaKarta;
+                            czyTuraGracza = true;
                         } else {
                             System.out.println("Komputer nie ma karty dla ruchu");
                             taliaKomputera.add(taliaKart.get(0));

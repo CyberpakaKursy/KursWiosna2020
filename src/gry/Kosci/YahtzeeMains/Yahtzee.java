@@ -7,15 +7,13 @@ import rankingi.WynikGry;
 
 public class Yahtzee implements Gra {
 
-    static Integer scoreInteger;
     String gameName = "Yahtzee";
     Game game = new Game();
-    public  WynikGry score;
 
     @Override
     public void przywitajGracza(Gracz nowyGracz) {
-        System.out.println("Welcome " + nowyGracz.pobierzNick()+"!");
-        System.out.println("Let's play "+podajNazwe()+"!");
+        System.out.println("Welcome " + nowyGracz.pobierzNick() + "!");
+        System.out.println("Let's play " + podajNazwe() + "!");
     }
 
     @Override
@@ -36,7 +34,7 @@ public class Yahtzee implements Gra {
 
     @Override
     public void zakonczGre() {
-        scoreInteger = game.ending();
+        game.ending();
     }
 
     @Override

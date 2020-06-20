@@ -130,16 +130,12 @@ public class Wojna implements Gra {
             taliaKomputera.remove(0);
             System.out.println("  Karta Komputera to: " + kartaKomputera.pobierzNazweKarty());
             if (kartaGracza.pobierzWartoscKarty() > kartaKomputera.pobierzWartoscKarty()) {
-                taliaKomputera.remove(kartaKomputera);
                 taliaGracza.add(kartaKomputera);
-                taliaKomputera.remove(0);
-                taliaKomputera.add(kartaKomputera);
+                taliaGracza.add(kartaGracza);
                 System.out.println("W tej turze lepszą kartę miałeś ty");
             } else if (kartaGracza.pobierzWartoscKarty() < kartaKomputera.pobierzWartoscKarty()) {
-                taliaGracza.remove(kartaGracza);
                 taliaKomputera.add(kartaGracza);
-                taliaGracza.remove(0);
-                taliaGracza.add(kartaGracza);
+                taliaKomputera.add(kartaKomputera);
                 System.out.println("W tej turze lepszą kartę miał komputer");
             } else {
                 /*wojna*/
