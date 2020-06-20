@@ -6,8 +6,8 @@ import rankingi.Gracz;
 import rankingi.WynikGry;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
+import java.util.Scanner;
 
 public class BlackJack implements Gra {
 
@@ -138,44 +138,51 @@ public class BlackJack implements Gra {
                         break;
                     } else {
                         System.out.println("Gracz jeszcze nie skonczyl gry.");
-                        taliaGracza.add(talia.get(0));
-                        talia.remove(0);
+                        System.out.println("Czy chcesz pobrać kartę? (false/true)");
+                        Scanner scanner = new Scanner(System.in);
+                        String czyBracKarte = scanner.nextLine();
+                        if (czyBracKarte.toLowerCase().contains("true") ||
+                                czyBracKarte.toLowerCase().contains("tak") ||
+                                czyBracKarte.toLowerCase().equals("t")) {
+                            taliaGracza.add(talia.get(0));
+                            talia.remove(0);
+                        }
                     }
                     for (Karta kartaGracza : taliaGracza) {
                         System.out.println("W tali gracza jest: " + kartaGracza.pobierzNazweKarty());
                     }
-                    System.out.println("Zaczyna komputer!");
                 } else {
                     taliaGracza.add(talia.get(0));
                     talia.remove(0);
                 }
                 czyKolejkaGracza = !czyKolejkaGracza;
             } else {
-                if (czyKolejkaKomputera) {
-                    System.out.println("Zaczyna Komputer!");
-                    if (taliaKomputera.size() > 0) {
-                        if (czyTaliaMa2Asy(taliaKomputera)) {
-                            System.out.println("Wygrana komputera!");
-                            break;
-                        } else if (podajWartoscTali(taliaKomputera) == 21) {
-                            System.out.println("Wygrana komputera!");
-                            break;
-                        } else if (podajWartoscTali(taliaKomputera) > 21) {
-                            System.out.println("Przegrana komputera!");
-                            break;
-                        } else {
-                            System.out.println("Komputer jeszcze nie skonczyl gry.");
-                            taliaKomputera.add(talia.get(0));
-                            talia.remove(0);
+                System.out.println("Zaczyna Komputer!");
+                if (taliaKomputera.size() > 0) {
+                    if (czyTaliaMa2Asy(taliaKomputera)) {
+                        System.out.println("Wygrana komputera!");
+                        break;
+                    } else if (podajWartoscTali(taliaKomputera) == 21) {
+                        System.out.println("Wygrana komputera!");
+                        break;
+                    } else if (podajWartoscTali(taliaKomputera) > 21) {
+                        System.out.println("Wygrana!");
+                        break;
+                    } else {
+                        System.out.println("Komputer jeszcze nie skonczyl gry.");
+                        taliaKomputera.add(talia.get(0));
+                        talia.remove(0);
 
-                            for (Karta kartaKomputera : taliaKomputera) {
-                                System.out.println("W tali komputera jest: " + taliaKomputera);
+                        for (Karta kartaKomputera : taliaKomputera) {
+                            System.out.println("W tali komputera jest: " + kartaKomputera.pobierzNazweKarty());
 
-                            }
-                            czyKolejkaGracza = !czyKolejkaGracza;
                         }
                     }
+                } else {
+                    taliaKomputera.add(talia.get(0));
+                    talia.remove(0);
                 }
+                czyKolejkaGracza = !czyKolejkaGracza;
             }
         }
         return false;

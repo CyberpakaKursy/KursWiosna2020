@@ -293,6 +293,7 @@ public class Remik implements Gra {
         if (mapaKart.containsValue(3)){
             return true;
         }
+
         ArrayList<Integer> posortowaneWartosci = new ArrayList<>(mapaKart.keySet());
         Collections.sort(posortowaneWartosci);
         Integer poprzedniElement=0;
