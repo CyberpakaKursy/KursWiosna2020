@@ -58,9 +58,10 @@ public class Game {
             rollRoundPC.rollMechanism();
             tablePC = (PCTable) cellPC.cellMechanism(rollRoundPC.getDices(),tablePC);
         }
+        finalCounting();
     }
 
-    public Integer ending() {
+    public void finalCounting() {
         sumPC = tablePC.getAces();
         sumPC =+ tablePC.getTwos();
         sumPC =+ tablePC.getThrees();
@@ -94,7 +95,9 @@ public class Game {
         sumP =+ tableP.getLowStraight();
         sumP =+ tableP.getHighStraight();
         sumP =+ tableP.getYahtzee();
+    }
 
+    public Integer ending() {
         if(sumP>sumPC){
             System.out.println("WIN");
         } else if(sumP==sumPC) {
