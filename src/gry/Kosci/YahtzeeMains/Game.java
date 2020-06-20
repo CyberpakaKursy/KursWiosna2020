@@ -19,7 +19,7 @@ public class Game {
     PlayerCell cellP = new PlayerCell();
     int sumP;
 
-    public void clearLabel(){
+    public void clearLabel() {
         tablePC.setAces(null);
         tablePC.setTwos(null);
         tablePC.setThrees(null);
@@ -51,61 +51,60 @@ public class Game {
         tableP.setChance(null);
     }
 
-    public void gameMechanism(){
+    public void gameMechanism() {
         while (tablePC.ifTableFull() && tableP.ifTableFull()) {
             rollRoundP.rollMechanism();
-            tableP = (PlayerTable) cellP.cellMechanism(rollRoundP.getDices(),tableP);
+            tableP = (PlayerTable) cellP.cellMechanism(rollRoundP.getDices(), tableP);
             rollRoundPC.rollMechanism();
-            tablePC = (PCTable) cellPC.cellMechanism(rollRoundPC.getDices(),tablePC);
+            tablePC = (PCTable) cellPC.cellMechanism(rollRoundPC.getDices(), tablePC);
         }
         finalCounting();
     }
 
     public void finalCounting() {
         sumPC = tablePC.getAces();
-        sumPC =+ tablePC.getTwos();
-        sumPC =+ tablePC.getThrees();
-        sumPC =+ tablePC.getFours();
-        sumPC =+ tablePC.getFives();
-        sumPC =+ tablePC.getSixes();
+        sumPC += tablePC.getTwos();
+        sumPC += tablePC.getThrees();
+        sumPC += tablePC.getFours();
+        sumPC += tablePC.getFives();
+        sumPC += tablePC.getSixes();
 
-        if(sumPC>=65) tablePC.setUpperBonus(35);
+        if (sumPC >= 65) tablePC.setUpperBonus(35);
 
-        sumPC =+ tablePC.getUpperBonus();
-        sumPC =+ tablePC.getThreeOfKind();
-        sumPC =+ tablePC.getFourOfKind();
-        sumPC =+ tablePC.getFullHouse();
-        sumPC =+ tablePC.getLowStraight();
-        sumPC =+ tablePC.getHighStraight();
-        sumPC =+ tablePC.getYahtzee();
+        sumPC += tablePC.getUpperBonus();
+        sumPC += tablePC.getThreeOfKind();
+        sumPC += tablePC.getFourOfKind();
+        sumPC += tablePC.getFullHouse();
+        sumPC += tablePC.getLowStraight();
+        sumPC += tablePC.getHighStraight();
+        sumPC += tablePC.getYahtzee();
 
         sumP = tableP.getAces();
-        sumP =+ tableP.getTwos();
-        sumP =+ tableP.getThrees();
-        sumP =+ tableP.getFours();
-        sumP =+ tableP.getFives();
-        sumP =+ tableP.getSixes();
+        sumP += tableP.getTwos();
+        sumP += tableP.getThrees();
+        sumP += tableP.getFours();
+        sumP += tableP.getFives();
+        sumP += tableP.getSixes();
 
-        if(sumP>=65) tableP.setUpperBonus(35);
+        if (sumP >= 65) tableP.setUpperBonus(35);
 
-        sumP =+ tableP.getUpperBonus();
-        sumP =+ tableP.getThreeOfKind();
-        sumP =+ tableP.getFourOfKind();
-        sumP =+ tableP.getFullHouse();
-        sumP =+ tableP.getLowStraight();
-        sumP =+ tableP.getHighStraight();
-        sumP =+ tableP.getYahtzee();
+        sumP += tableP.getUpperBonus();
+        sumP += tableP.getThreeOfKind();
+        sumP += tableP.getFourOfKind();
+        sumP += tableP.getFullHouse();
+        sumP += tableP.getLowStraight();
+        sumP += tableP.getHighStraight();
+        sumP += tableP.getYahtzee();
     }
 
-    public Integer ending() {
-        if(sumP>sumPC){
-            System.out.println("WIN");
-        } else if(sumP==sumPC) {
-            System.out.println("DRAW");
+    public void ending() {
+        if (sumP > sumPC) {
+            System.out.println("\nWIN");
+        } else if (sumP == sumPC) {
+            System.out.println("\nDRAW");
         } else {
-            System.out.println("DEFEAT");
+            System.out.println("\nDEFEAT");
         }
-
-        return sumP;
+        System.out.println("You've earned: " + sumP + " points. ");
     }
 }
